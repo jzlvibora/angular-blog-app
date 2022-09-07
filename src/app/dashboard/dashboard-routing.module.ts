@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddPostComponent } from './admin/add-post/add-post.component';
 import { AdminComponent } from './admin/admin.component';
 import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
   {path:'admin', component:AdminComponent},
   {path:'post', component:PostComponent},
+  {path:'new', component:AddPostComponent}
   
 ];
 

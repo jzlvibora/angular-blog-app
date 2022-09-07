@@ -1,34 +1,55 @@
 <div class="back-btn">
-    <button mat-raised-button color="primary" routerLink="/admin"> Back</button>
+    <button mat-raised-button color="primary" routerLink="/admin">Back</button>
 </div>
 
 <div>
-    <form>
+    <div *ngIf="error" class="alert alert-danger alert-dismissible fade show " role="alert" style=" margin:auto">
+        <strong>Error!</strong> {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-card  class="form-container">
 <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
-    <input matInput>
+    <input matInput formControlName="title">
+    <mat-error *ngIf="form.get('title')?.invalid && (form.get('title')?.dirty || form.get('title')?.touched) && form.get('title')?.errors?.['required']">
+        Title is required
+    </mat-error>
 </mat-form-field>
+
 <mat-form-field appearance="fill">
     <mat-label>Author</mat-label>
-    <input matInput>
+    <input matInput formControlName="author">
+    <mat-error *ngIf="form.get('author')?.invalid && (form.get('author')?.dirty || form.get('author')?.touched) && form.get('author')?.errors?.['required']">
+        Author is required
+    </mat-error>
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Image</mat-label>
-    <input matInput>
+    <input matInput formControlName="image">
+    <mat-error *ngIf="form.get('image')?.invalid && (form.get('image')?.dirty || form.get('image')?.touched) && form.get('image')?.errors?.['required']">
+        Image is required
+    </mat-error>
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
-    <input matInput>
+    <textarea matInput placeholder="Ex. It makes me feel..." rows="5" formControlName="description"></textarea>
+    <mat-error *ngIf="form.get('description')?.invalid && (form.get('description')?.dirty || form.get('description')?.touched) && form.get('description')?.errors?.['required']">
+        Description is required
+    </mat-error>
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Date</mat-label>
-    <input matInput>
+    <input type="date" matInput formControlName="dateCreated">
+    <mat-error *ngIf="form.get('dateCreated')?.invalid && (form.get('dateCreated')?.dirty || form.get('dateCreated')?.touched) && form.get('dateCreated')?.errors?.['required']">
+        Image is required
+    </mat-error>
 </mat-form-field>
 
 <div class="actions">
     <button  mat-raised-button color="accent"> Save </button>
-    <button  mat-raised-button color="accent"> Cancel </button>
+    <button  mat-raised-button color="accent" type="button"> Cancel </button>
 </div>
 </mat-card>
 </form>

@@ -10,10 +10,12 @@ import { AdminComponent } from './dashboard/admin/admin.component';
 import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { TruncatePipe } from './dashboard/admin/pipes/truncate.pipe';
 import { FooterComponent } from './footer/footer.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS , MatLabel} from '@angular/material/form-field';
 import { MaterialModule } from './shared/material/material.module';
 import { AddPostComponent } from './dashboard/admin/add-post/add-post.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -33,7 +35,12 @@ import { AddPostComponent } from './dashboard/admin/add-post/add-post.component'
     BrowserAnimationsModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
-    MaterialModule
+    FormsModule,
+    MaterialModule,
+    HttpClientModule,
+    
+    
+    
    
     
   ],

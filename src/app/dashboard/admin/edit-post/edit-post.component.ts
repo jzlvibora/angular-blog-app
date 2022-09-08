@@ -27,7 +27,7 @@ export class EditPostComponent implements OnInit {
 
     this.getBlogPost()
 
-    this.form=this.buildForm();
+    
   }
 
   private buildForm():FormGroup{
@@ -35,8 +35,8 @@ export class EditPostComponent implements OnInit {
       title: new FormControl(this.blogPost?.title,[Validators.required]),
       author: new FormControl(this.blogPost?.author,[Validators.required]),
       image:new FormControl(this.blogPost?.image,[Validators.required]),
-      description: new FormControl(this.blogPost?.body, [Validators.required]),
-      dateCreated:new FormControl(Date.now().toString, [Validators.required])
+      body: new FormControl(this.blogPost?.body, [Validators.required]),
+      createdAt:new FormControl(Date.now().toString, [Validators.required])
     })
   }
 
@@ -86,7 +86,9 @@ export class EditPostComponent implements OnInit {
   getBlogPost(){
     this.blogPostService.getBlogPost(this.id).subscribe((res)=>{
       this.blogPost=res
+      this.form=this.buildForm();
       this.setFormValue(this.blogPost)
+      return this.form.value
     })
 
   }

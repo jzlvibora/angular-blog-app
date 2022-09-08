@@ -34,15 +34,15 @@
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..." rows="5" formControlName="description"></textarea>
-    <mat-error *ngIf="form.get('description')?.invalid && (form.get('description')?.dirty || form.get('description')?.touched) && form.get('description')?.errors?.['required']">
+    <textarea matInput placeholder="Ex. It makes me feel..." rows="5" formControlName="body"></textarea>
+    <mat-error *ngIf="form.get('body')?.invalid && (form.get('body')?.dirty || form.get('body')?.touched) && form.get('body')?.errors?.['required']">
         Description is required
     </mat-error>
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Date</mat-label>
-    <input type="date" matInput formControlName="dateCreated">
-    <mat-error *ngIf="form.get('dateCreated')?.invalid && (form.get('dateCreated')?.dirty || form.get('dateCreated')?.touched) && form.get('dateCreated')?.errors?.['required']">
+    <input type="date" matInput formControlName="createdAt">
+    <mat-error *ngIf="form.get('createdAt')?.invalid && (form.get('createdAt')?.dirty || form.get('createdAt')?.touched) && form.get('createdAt')?.errors?.['required']">
         Image is required
     </mat-error>
 </mat-form-field>

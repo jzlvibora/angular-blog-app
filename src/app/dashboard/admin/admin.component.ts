@@ -97,7 +97,7 @@ import { BlogPost } from 'src/app/shared/blog-post';let BLOGPOST_DATA: BlogPost[
 export class AdminComponent implements OnInit {
   blogPosts:BlogPost[]=[];
   displayedColumns: string[] = [ 'id', 'title', 'author', 'body', 'image', 'createdAt', 'action'] ;
-  isLoading:boolean=false;
+  isLoading:boolean=true;
 
   constructor(private router:Router, private route:ActivatedRoute, private blogPostService:PostService) { }
 
@@ -105,6 +105,7 @@ export class AdminComponent implements OnInit {
     this.blogPostService.getBlogPosts().subscribe((res)=>{
       this.blogPosts=res;
       console.log(this.blogPosts)
+      this.isLoading=false
     })
 
   }

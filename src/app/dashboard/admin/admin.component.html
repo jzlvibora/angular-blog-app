@@ -63,7 +63,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   
-    <!-- <mat-spinner></mat-spinner> -->
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
     <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms')">Open dialog without animation</button> -->
     <!-- <mat-paginator #paginator [length]="totalRows" [pageIndex]="currentPage" [pageSize]="pageSize"
       [pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)" aria-label="Select page">

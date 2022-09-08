@@ -15,6 +15,8 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS , MatLabel} from '@a
 import { MaterialModule } from './shared/material/material.module';
 import { AddPostComponent } from './dashboard/admin/add-post/add-post.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 
@@ -38,6 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MaterialModule,
     HttpClientModule,
+    ToastrModule.forRoot()
+    
     
     
     

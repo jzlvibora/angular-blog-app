@@ -7,7 +7,7 @@ import { PostComponent } from './post/post.component';
 const routes: Routes = [
   {path:'admin', component:AdminComponent},
   {path:'post', component:PostComponent},
-  {path:'new', component:AddPostComponent}
+  {path:'admin/new', component:AddPostComponent}
   
 ];
 

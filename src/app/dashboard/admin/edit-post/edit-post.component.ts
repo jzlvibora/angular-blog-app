@@ -96,7 +96,8 @@ export class EditPostComponent implements OnInit {
   }
 
   setFormValue(blogPost:BlogPost){
-    // this.form.controls['id'].setValue(blogPost?.id);
+    
+    //  this.form.controls['id'].setValue(blogPost?.id);
     this.form.controls['title'].setValue(blogPost?.title);
     this.form.controls['author'].setValue(blogPost?.author);
     this.form.controls['createdAt'].setValue(blogPost?.createdAt);

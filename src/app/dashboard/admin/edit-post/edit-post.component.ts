@@ -21,11 +21,15 @@ export class EditPostComponent implements OnInit {
   constructor(private router:Router,private blogPostService:PostService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params:Params)=>{
-      this.id=params['id'];
-    })
+    this.form=this.buildForm();
+    // this.route.params.subscribe((params:Params)=>{
+    //   this.id=params['id'];
+    // })
+    // console.log(this.route.params)
+    // console.log(this.route.snapshot.params['id'])
+    this.id=Number(this.route.snapshot.paramMap.get('id'))
 
-    this.getBlogPost()
+    this.getBlogPost(this.id)
 
     
   }
@@ -36,7 +40,7 @@ export class EditPostComponent implements OnInit {
       author: new FormControl(this.blogPost?.author,[Validators.required]),
       image:new FormControl(this.blogPost?.image,[Validators.required]),
       body: new FormControl(this.blogPost?.body, [Validators.required]),
-      createdAt:new FormControl(Date.now().toString, [Validators.required])
+      createdAt:new FormControl(this.blogPost?.createdAt, [Validators.required])
     })
   }
 
@@ -83,18 +87,16 @@ export class EditPostComponent implements OnInit {
     })
   }
 
-  getBlogPost(){
-    this.blogPostService.getBlogPost(this.id).subscribe((res)=>{
+  getBlogPost(postId:number){
+    this.blogPostService.getBlogPost(postId).subscribe((res)=>{
       this.blogPost=res
-      this.form=this.buildForm();
       this.setFormValue(this.blogPost)
-      return this.form.value
     })
 
   }
 
   setFormValue(blogPost:BlogPost){
-    this.form.controls['id'].setValue(blogPost?.id);
+    // this.form.controls['id'].setValue(blogPost?.id);
     this.form.controls['title'].setValue(blogPost?.title);
     this.form.controls['author'].setValue(blogPost?.author);
     this.form.controls['createdAt'].setValue(blogPost?.createdAt);

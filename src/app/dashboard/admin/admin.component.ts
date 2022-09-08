@@ -114,6 +114,11 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['new'], {relativeTo:this.route})
   }
 
+  onEditBlogPost(id:number){
+    console.log(id)
+    this.router.navigate([`edit/${id}`], {relativeTo:this.route})
+  }
+
   
 
 }

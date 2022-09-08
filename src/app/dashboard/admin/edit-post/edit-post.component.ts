@@ -17,19 +17,20 @@ export class EditPostComponent implements OnInit {
   form!:FormGroup;
   error:string='';
   isSubmitSuccessful:boolean=false;
+  isLoading=true;
 
   constructor(private router:Router,private blogPostService:PostService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.form=this.buildForm();
-    // this.route.params.subscribe((params:Params)=>{
-    //   this.id=params['id'];
-    // })
+    this.route.params.subscribe((params:Params)=>{
+      this.id=params['id'];
+    })
     // console.log(this.route.params)
     // console.log(this.route.snapshot.params['id'])
-    this.id=Number(this.route.snapshot.paramMap.get('id'))
+    // this.id=Number(this.route.snapshot.paramMap.get('id'))
 
-    this.getBlogPost(this.id)
+    this.getBlogPost()
 
     
   }
@@ -48,20 +49,21 @@ export class EditPostComponent implements OnInit {
     return this.form.controls;
   }
 
-  // onSubmit(){
-  //   if(this.form.invalid){
-  //     this.infoNotification();
-  //     return
-  //   }
-  //   this.blogPostService.postBlogPost(this.form.value).subscribe((res)=>{
-  //     console.log(res);
-  //     this.successNotification();
-  //     this.form.reset();
-  //   },(err:HttpErrorResponse)=>{
-  //     this.error=err.message;
-  //     this.errorNotification(err.message)
-  //   })
-  // }
+  onSubmit(){
+    if(this.form.invalid){
+      this.infoNotification();
+      return
+    }
+    this.blogPostService.updateBlogPost(this.form.value,this.id).subscribe((res)=>{
+      console.log(this.form.value)
+      console.log(res);
+      this.successNotification();
+      this.form.reset();
+    },(err:HttpErrorResponse)=>{
+      this.error=err.message;
+      this.errorNotification(err.message)
+    })
+  }
 
   successNotification() {
     Swal.fire({
@@ -87,16 +89,19 @@ export class EditPostComponent implements OnInit {
     })
   }
 
-  getBlogPost(postId:number){
-    this.blogPostService.getBlogPost(postId).subscribe((res)=>{
+  getBlogPost(){
+    this.blogPostService.getBlogPost(this.id).subscribe((res)=>{
       this.blogPost=res
       this.setFormValue(this.blogPost)
+      this.isLoading=false
+    },(err:HttpErrorResponse)=>{
+      this.errorNotification(err.message);
     })
 
   }
 
   setFormValue(blogPost:BlogPost){
-    
+
     //  this.form.controls['id'].setValue(blogPost?.id);
     this.form.controls['title'].setValue(blogPost?.title);
     this.form.controls['author'].setValue(blogPost?.author);

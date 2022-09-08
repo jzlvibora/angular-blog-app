@@ -8,7 +8,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-card  class="form-container">
 <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
@@ -53,6 +53,7 @@
 </div>
 </mat-card>
 </form>
-
+<mat-spinner *ngIf="isLoading"></mat-spinner>
 
 </div>
+

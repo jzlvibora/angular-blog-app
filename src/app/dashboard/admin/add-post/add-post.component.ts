@@ -17,7 +17,7 @@ export class AddPostComponent implements OnInit {
   error:string='';
   isSubmitSuccessful:boolean=false;
 
-  constructor(private router:Router,private blogPostService:PostService,private toastr: ToastrService) { }
+  constructor(private router:Router,private blogPostService:PostService) { }
 
   ngOnInit(): void {
     this.form=this.buildForm();

@@ -18,6 +18,7 @@ const routes: Routes = [
     {path:'post', component:PostComponent}
   ]
 },
+{path:'**', component:PageNotFoundComponent}
   
 ];
 

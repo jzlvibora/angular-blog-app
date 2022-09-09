@@ -6,13 +6,15 @@ import { TruncatePipe } from './admin/pipes/truncate.pipe';
 import { AddPostComponent } from './admin/add-post/add-post.component';
 import { EditPostComponent } from './admin/edit-post/edit-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostComponent } from './post/post.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
   declarations: [
     TruncatePipe,
-    AddPostComponent,
-    EditPostComponent
+    // AddPostComponent,
+    // EditPostComponent
   ],
   imports: [
     CommonModule,

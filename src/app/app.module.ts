@@ -17,6 +17,8 @@ import { AddPostComponent } from './dashboard/admin/add-post/add-post.component'
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { EditPostComponent } from './dashboard/admin/edit-post/edit-post.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 
@@ -30,19 +32,20 @@ import { EditPostComponent } from './dashboard/admin/edit-post/edit-post.compone
     TruncatePipe,
     FooterComponent,
     AddPostComponent,
-    EditPostComponent
+    EditPostComponent,
+    PageNotFoundComponent
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DashboardRoutingModule,
+    // DashboardRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+  
     
     
     

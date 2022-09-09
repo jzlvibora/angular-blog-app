@@ -6,11 +6,14 @@ import { EditPostComponent } from './admin/edit-post/edit-post.component';
 import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
-  {path:'admin', component:AdminComponent},
-  {path:'post', component:PostComponent},
-  {path:'admin/new', component:AddPostComponent},
-  {path:'admin/edit/:id', component:EditPostComponent}
-  
+ {path:'post', pathMatch:'full', component:PostComponent},
+ {path:'post', component:PostComponent},
+ {path:'admin', component:AdminComponent,
+ children:[
+  {path:'new', component:AddPostComponent},
+  {path:'edit/:id', component:EditPostComponent}
+
+ ]}
 ];
 
 @NgModule({

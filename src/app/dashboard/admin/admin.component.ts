@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post/post.service';
-import { BlogPost } from 'src/app/shared/blog-post';let BLOGPOST_DATA: BlogPost[] = 
+import { BlogPost } from 'src/app/shared/blog-post';import Swal from 'sweetalert2';
+let BLOGPOST_DATA: BlogPost[] = 
   [
     // { 
     //   id:1,
@@ -102,6 +103,10 @@ export class AdminComponent implements OnInit {
   constructor(private router:Router, private route:ActivatedRoute, private blogPostService:PostService) { }
 
   ngOnInit(): void {
+  this.getBlogPosts();
+  }
+
+  getBlogPosts(){
     this.blogPostService.getBlogPosts().subscribe((res)=>{
       this.blogPosts=res;
       console.log(this.blogPosts)
@@ -109,6 +114,36 @@ export class AdminComponent implements OnInit {
     })
 
   }
+
+  onDeleteBlogPost(id:number){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.blogPostService.deleteBlogPost(id).subscribe((res)=>{
+          console.log(res)
+          this.getBlogPosts();
+          Swal.fire(
+            'Deleted!',
+            'Your post has been deleted.',
+            'success'
+          )
+        })
+        
+      }
+    })
+
+   
+
+    
+  }
+  
 
   onNewBlogPost(){
     this.router.navigate(['new'], {relativeTo:this.route})
@@ -118,6 +153,8 @@ export class AdminComponent implements OnInit {
     console.log(id)
     this.router.navigate([`edit/${id}`], {relativeTo:this.route})
   }
+
+
 
   
 

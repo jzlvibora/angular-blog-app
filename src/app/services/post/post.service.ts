@@ -29,4 +29,8 @@ export class PostService {
   public updateBlogPost(blogPost:BlogPost, id:number){
     return this.http.put(`https://6319a9566b4c78d91b403f35.mockapi.io/ngBlog/v1/blogs/${id}`, blogPost);
   }
+
+  public deleteBlogPost( id:number){
+    return this.http.delete(`https://6319a9566b4c78d91b403f35.mockapi.io/ngBlog/v1/blogs/${id}`);
+  }
 }

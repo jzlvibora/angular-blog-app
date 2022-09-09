@@ -89,6 +89,8 @@ export class EditPostComponent implements OnInit {
     })
   }
 
+ 
+
   getBlogPost(){
     this.blogPostService.getBlogPost(this.id).subscribe((res)=>{
       this.blogPost=res

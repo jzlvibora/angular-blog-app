@@ -16,13 +16,13 @@
       <!-- Image Column -->
       <ng-container matColumnDef="image">
           <th mat-header-cell *matHeaderCellDef> Image URL </th>
-          <td mat-cell *matCellDef="let element"> {{element.image | truncate}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.image | truncate :60}} </td>
         </ng-container>
     
       <!-- Name Column -->
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef> Title </th>
-        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.title | truncate : 30}} </td>
       </ng-container>
     
       <!-- Email Column -->
@@ -34,13 +34,13 @@
       <!-- Job Title Column -->
       <ng-container matColumnDef="body">
         <th mat-header-cell *matHeaderCellDef> Body </th>
-        <td mat-cell *matCellDef="let element"> {{element.body | truncate}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.body | truncate : 80}} </td>
       </ng-container>
   
       <!-- Phone Column -->
       <ng-container matColumnDef="createdAt">
           <th mat-header-cell *matHeaderCellDef> Date Created </th>
-          <td mat-cell *matCellDef="let element"> {{element.createdAt.toString() | truncate}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.createdAt.toString() | date : 'short'}} </td>
         </ng-container>
   
   

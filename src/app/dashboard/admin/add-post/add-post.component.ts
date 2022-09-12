@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class AddPostComponent implements OnInit {
   form!:FormGroup;
-  error:string='';
+  error:string|null=null;
   isSubmitSuccessful:boolean=false;
 
   constructor(private router:Router,private blogPostService:PostService) { }
@@ -29,7 +29,7 @@ export class AddPostComponent implements OnInit {
       author: new FormControl(null,[Validators.required]),
       image:new FormControl(null,[Validators.required]),
       description: new FormControl(null, [Validators.required]),
-      dateCreated:new FormControl(Date.now().toString, [Validators.required])
+      dateCreated:new FormControl(Date.now().toLocaleString(), [Validators.required])
     })
   }
 

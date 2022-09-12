@@ -1,0 +1,70 @@
+// -----------------------------------------------------------------------------
+// When having several themes, this file contains everything related to the
+// default one.
+// -----------------------------------------------------------------------------
+@import '../../node_modules/@angular/material/theming';
+// @import '../../../node_modules/@angular/material/theming';
+@include mat-core();
+
+$dif-blue-palette: (
+ 50: #B3DAFF,
+ 100: #8DB6FF,
+ 200: #6893DE,
+ 300: #A8D0E6,
+ 400: #374785,
+ 500: #374785,
+ 600: #374785,
+ 700: #374785,
+ 800: #374785,
+ 900: #374785,
+
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+   400: white,
+   500: white,
+   600: white,
+   700: white,
+   800: white,
+   900: white
+ 
+ )
+);
+
+$dif-gray-palette: (
+ 50: #F76C6C,
+ 100: #F76C6C,
+ 200: #F76C6C,
+ 300: #525252,
+ 400: #2B2B2B,
+ 500: #2B2B2B,
+ 600: #2B2B2B,
+ 700: #2B2B2B,
+ 800: #2B2B2B,
+ 900: #2B2B2B,
+
+ contrast: (
+   50: rgba(white, 1),
+   100: rgba(white, 1),
+   200: rgba(white, 1),
+   300: white,
+   400: white,
+   500: white,
+   600: white,
+   700: white,
+   800: white,
+   900: white
+ 
+ )
+);
+
+
+$dif-theme-primary: mat-define-palette($dif-blue-palette, 300);
+$dif-theme-accent: mat-define-palette($dif-gray-palette, 50, 100, 400);
+$dif-theme-warn: mat-define-palette($mat-red);
+
+$dif-admin-theme: mat-light-theme($dif-theme-primary, $dif-theme-accent, $dif-theme-warn);
+
+@include angular-material-theme($dif-admin-theme);

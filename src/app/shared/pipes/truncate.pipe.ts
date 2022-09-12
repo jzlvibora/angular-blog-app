@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TruncatePipe implements PipeTransform {
 
-  transform(text: string, length:number=40, suffix:string='...'): string {
-    if(text.length > length){
-      let truncated:string = text.substring(0,length).trim() + suffix;
+  transform(text: string, limit:number): string {
+    if(text.length > limit){
+      let truncated:string = text.substring(0,limit).trim() + '...';
       return truncated;
     }
 

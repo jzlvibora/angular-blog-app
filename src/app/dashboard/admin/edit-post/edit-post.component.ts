@@ -1,10 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post/post.service';
 import { BlogPost } from 'src/app/shared/blog-post';
-import Swal from 'sweetalert2';
+import { AlertsService } from '../alerts.service';
 
 @Component({
   selector: 'app-edit-post',
@@ -15,11 +16,12 @@ export class EditPostComponent implements OnInit {
   id!:number;
   blogPost!:BlogPost;
   form!:FormGroup;
-  error:string='';
+  error:string|null=null;
   isSubmitSuccessful:boolean=false;
   isLoading=true;
+  
 
-  constructor(private router:Router,private blogPostService:PostService,private route:ActivatedRoute) { }
+  constructor(private router:Router,private blogPostService:PostService,private route:ActivatedRoute, private datePipe:DatePipe, private alertService:AlertsService) { }
 
   ngOnInit(): void {
     this.form=this.buildForm();
@@ -30,7 +32,8 @@ export class EditPostComponent implements OnInit {
     // console.log(this.route.snapshot.params['id'])
     // this.id=Number(this.route.snapshot.paramMap.get('id'))
 
-    this.getBlogPost()
+    this.getBlogPost();
+    console.log(this.form)
 
     
   }
@@ -41,7 +44,7 @@ export class EditPostComponent implements OnInit {
       author: new FormControl(this.blogPost?.author,[Validators.required]),
       image:new FormControl(this.blogPost?.image,[Validators.required]),
       body: new FormControl(this.blogPost?.body, [Validators.required]),
-      createdAt:new FormControl(this.blogPost?.createdAt, [Validators.required])
+      createdAt:new FormControl(this.blogPost?.createdAt.toLocaleDateString().slice(0,10), [Validators.required])
     })
   }
 
@@ -51,41 +54,17 @@ export class EditPostComponent implements OnInit {
 
   onSubmit(){
     if(this.form.invalid){
-      this.infoNotification();
+      this.alertService.infoNotification();
       return
     }
     this.blogPostService.updateBlogPost(this.form.value,this.id).subscribe((res)=>{
       console.log(this.form.value)
       console.log(res);
-      this.successNotification();
+      this.alertService.successNotification();
       this.form.reset();
     },(err:HttpErrorResponse)=>{
       this.error=err.message;
-      this.errorNotification(err.message)
-    })
-  }
-
-  successNotification() {
-    Swal.fire({
-      title: 'Successful',
-      text: 'Saved succesfully',
-      icon: 'success',
-    })
-  }
-
-  errorNotification(error:string) {
-    Swal.fire({
-      title: 'Error',
-      text: `Failed. ${this.error}`  ,
-      icon: 'error',
-    })
-  }
-
-  infoNotification(){
-    Swal.fire({
-      title: 'Invalid',
-      text: `Please fill out all the required fields`  ,
-      icon: 'info',
+      this.alertService.errorNotification(err.message)
     })
   }
 
@@ -97,14 +76,13 @@ export class EditPostComponent implements OnInit {
       this.setFormValue(this.blogPost)
       this.isLoading=false
     },(err:HttpErrorResponse)=>{
-      this.errorNotification(err.message);
+      this.alertService.errorNotification(err.message);
     })
 
   }
 
   setFormValue(blogPost:BlogPost){
-
-    //  this.form.controls['id'].setValue(blogPost?.id);
+//  this.form.controls['id'].setValue(blogPost?.id);
     this.form.controls['title'].setValue(blogPost?.title);
     this.form.controls['author'].setValue(blogPost?.author);
     this.form.controls['createdAt'].setValue(blogPost?.createdAt);

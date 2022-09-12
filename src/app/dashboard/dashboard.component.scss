@@ -1,16 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Ms+Madi&family=Poppins:wght@100;200;400;500&display=swap');
+@import 'src/styles';
 
 .sidenav-container {
   height: 100%;
 }
 
 .sidenav {
-  width: 200px;
+  width: 250px;
 }
 
 .sidenav .mat-toolbar {
   background: inherit;
 }
+
+
+mat-sidenav{
+  background:$primary-color !important;
+  color:$font-secondary-color !important;
+  padding: 0;
+}
+
+a{
+  color:white !important;
+}
+
+mat-icon{
+  margin-right: 1rem;
+}
+
 
 .mat-toolbar.mat-primary {
   position: sticky;

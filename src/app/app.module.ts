@@ -7,18 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PostComponent } from './dashboard/post/post.component';
 import { AdminComponent } from './dashboard/admin/admin.component';
-import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
-import { TruncatePipe } from './dashboard/admin/pipes/truncate.pipe';
+import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS , MatLabel} from '@angular/material/form-field';
 import { MaterialModule } from './shared/material/material.module';
 import { AddPostComponent } from './dashboard/admin/add-post/add-post.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
 import { EditPostComponent } from './dashboard/admin/edit-post/edit-post.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { PostListComponent } from './dashboard/admin/post-list/post-list.component';
+import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -33,27 +32,26 @@ import { DashboardModule } from './dashboard/dashboard.module';
     FooterComponent,
     AddPostComponent,
     EditPostComponent,
-    PageNotFoundComponent
+    PostListComponent,
+    PageNotFoundComponent,
+  
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // DashboardRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
     HttpClientModule,
+    DashboardRoutingModule,
+  
   
     
     
-    
-    
-   
-    
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

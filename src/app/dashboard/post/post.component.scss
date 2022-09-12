@@ -1,6 +1,6 @@
 .example-card {
     max-width: 300px;
-    height: 400px;
+    max-height: 400px;
     margin: .5rem;
    display:inline-table;
   }
@@ -19,7 +19,7 @@
 //   }
 
 .card-container{
-    width:100%
+    width:100%;
 }
 
 mat-spinner{

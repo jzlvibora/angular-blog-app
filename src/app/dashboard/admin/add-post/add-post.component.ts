@@ -2,10 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { PostService } from 'src/app/services/post/post.service';
-import Swal from 'sweetalert2';
-// import { ToastrService } from 'ngx-toastr';
+import { AlertsService } from '../alerts.service';
 
 @Component({
   selector: 'app-add-post',
@@ -14,10 +12,10 @@ import Swal from 'sweetalert2';
 })
 export class AddPostComponent implements OnInit {
   form!:FormGroup;
-  error:string='';
+  error:string|null=null;
   isSubmitSuccessful:boolean=false;
 
-  constructor(private router:Router,private blogPostService:PostService,private toastr: ToastrService) { }
+  constructor(private router:Router,private blogPostService:PostService, private alertService:AlertsService) { }
 
   ngOnInit(): void {
     this.form=this.buildForm();
@@ -29,7 +27,7 @@ export class AddPostComponent implements OnInit {
       author: new FormControl(null,[Validators.required]),
       image:new FormControl(null,[Validators.required]),
       description: new FormControl(null, [Validators.required]),
-      dateCreated:new FormControl(Date.now().toString, [Validators.required])
+      createdAt:new FormControl(Date.now().toLocaleString(), [Validators.required])
     })
   }
 
@@ -39,40 +37,16 @@ export class AddPostComponent implements OnInit {
 
   onSubmit(){
     if(this.form.invalid){
-      this.infoNotification();
+      this.alertService.infoNotification();
       return
     }
     this.blogPostService.postBlogPost(this.form.value).subscribe((res)=>{
       console.log(res);
-      this.successNotification();
+      this.alertService.successNotification();
       this.form.reset();
     },(err:HttpErrorResponse)=>{
       this.error=err.message;
-      this.errorNotification(err.message)
-    })
-  }
-
-  successNotification() {
-    Swal.fire({
-      title: 'Successful',
-      text: 'Saved succesfully',
-      icon: 'success',
-    })
-  }
-
-  errorNotification(error:string) {
-    Swal.fire({
-      title: 'Error',
-      text: `Failed. ${this.error}`  ,
-      icon: 'error',
-    })
-  }
-
-  infoNotification(){
-    Swal.fire({
-      title: 'Invalid',
-      text: `Please fill out all the required fields`  ,
-      icon: 'info',
+      this.alertService.errorNotification(err.message)
     })
   }
 

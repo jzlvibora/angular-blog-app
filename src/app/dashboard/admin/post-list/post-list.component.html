@@ -48,8 +48,8 @@
           <th mat-header-cell *matHeaderCellDef> Action</th>
           <td mat-cell *matCellDef="let element" fxLayoutGap="">
               <button mat-raised-button>View</button>
-              <button mat-raised-button (click)="onEditBlogPost(element.id)">Edit</button>
-              <button mat-raised-button (click)="onDeleteBlogPost(element.id)">Delete</button>
+              <button mat-raised-button (click)="onEditBlogPost(element.id)" color="primary">Edit</button>
+              <button mat-raised-button (click)="onDeleteBlogPost(element.id)" color="accent">Delete</button>
              
           </td>
         </ng-container>

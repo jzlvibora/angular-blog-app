@@ -15,7 +15,7 @@ export class EditPostComponent implements OnInit {
   id!:number;
   blogPost!:BlogPost;
   form!:FormGroup;
-  error:string='';
+  error:string|null=null;
   isSubmitSuccessful:boolean=false;
   isLoading=true;
 

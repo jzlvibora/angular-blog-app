@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PostComponent } from './dashboard/post/post.component';
 import { AdminComponent } from './dashboard/admin/admin.component';
-import { TruncatePipe } from './dashboard/admin/pipes/truncate.pipe';
+import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material/material.module';

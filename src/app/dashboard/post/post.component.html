@@ -5,7 +5,7 @@
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{blogPost.title | truncate: 20}}</mat-card-title>
-      <mat-card-subtitle>{{blogPost.author}} <span>{{blogPost.createdAt|date}}</span></mat-card-subtitle>
+      <mat-card-subtitle><b>{{blogPost.author}}</b> | <span><i>{{blogPost.createdAt|date}}</i></span></mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image [src]=blogPost.image alt="{{blogPost.image}}">
     <mat-card-content>

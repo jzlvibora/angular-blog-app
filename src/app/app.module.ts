@@ -17,6 +17,7 @@ import { EditPostComponent } from './dashboard/admin/edit-post/edit-post.compone
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PostListComponent } from './dashboard/admin/post-list/post-list.component';
 import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -32,7 +33,8 @@ import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
     AddPostComponent,
     EditPostComponent,
     PostListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+  
   
   ],
   imports: [
@@ -44,16 +46,12 @@ import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
     MaterialModule,
     HttpClientModule,
     DashboardRoutingModule,
-    
+  
   
     
     
-    
-    
-   
-    
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

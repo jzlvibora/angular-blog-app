@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -18,8 +19,9 @@ export class EditPostComponent implements OnInit {
   error:string|null=null;
   isSubmitSuccessful:boolean=false;
   isLoading=true;
+  
 
-  constructor(private router:Router,private blogPostService:PostService,private route:ActivatedRoute) { }
+  constructor(private router:Router,private blogPostService:PostService,private route:ActivatedRoute, private datePipe:DatePipe) { }
 
   ngOnInit(): void {
     this.form=this.buildForm();
@@ -30,7 +32,8 @@ export class EditPostComponent implements OnInit {
     // console.log(this.route.snapshot.params['id'])
     // this.id=Number(this.route.snapshot.paramMap.get('id'))
 
-    this.getBlogPost()
+    this.getBlogPost();
+    console.log(this.form)
 
     
   }
@@ -41,7 +44,7 @@ export class EditPostComponent implements OnInit {
       author: new FormControl(this.blogPost?.author,[Validators.required]),
       image:new FormControl(this.blogPost?.image,[Validators.required]),
       body: new FormControl(this.blogPost?.body, [Validators.required]),
-      createdAt:new FormControl(this.blogPost?.createdAt, [Validators.required])
+      createdAt:new FormControl(this.blogPost?.createdAt.toLocaleDateString().slice(0,10), [Validators.required])
     })
   }
 

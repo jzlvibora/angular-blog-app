@@ -41,8 +41,8 @@
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Date</mat-label>
-    <input type="date" matInput formControlName="dateCreated">
-    <mat-error *ngIf="form.get('dateCreated')?.invalid && (form.get('dateCreated')?.dirty || form.get('dateCreated')?.touched) && form.get('dateCreated')?.errors?.['required']">
+    <input type="date" matInput formControlName="createdAt">
+    <mat-error *ngIf="form.get('createdAt')?.invalid && (form.get('createdAt')?.dirty || form.get('createdAt')?.touched) && form.get('createdAt')?.errors?.['required']">
         Image is required
     </mat-error>
 </mat-form-field>

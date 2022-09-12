@@ -29,7 +29,7 @@ export class AddPostComponent implements OnInit {
       author: new FormControl(null,[Validators.required]),
       image:new FormControl(null,[Validators.required]),
       description: new FormControl(null, [Validators.required]),
-      dateCreated:new FormControl(Date.now().toLocaleString(), [Validators.required])
+      createdAt:new FormControl(Date.now().toLocaleString(), [Validators.required])
     })
   }
 

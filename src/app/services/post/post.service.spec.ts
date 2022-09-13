@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing'
 import { BlogPost } from 'src/app/shared/blog-post';
 
+			
 const expectedBlogPosts: BlogPost[] = 
 [
   {
@@ -32,14 +33,14 @@ const expectedBlogPosts: BlogPost[] =
    body: "Atque aliquam quis natus ea voluptatum. Ducimus dolores voluptas et voluptatem. Consequuntur iusto minima qui tempora saepe quia. Enim temporibus ea. Quisquam adipisci impedit nulla atque. Non rerum earum ea odio ut qui modi.\nSoluta iusto possimus qui deserunt nostrum. Quasi quaerat porro ea harum sed non. Ut a commodi asperiores perferendis. Placeat nostrum sit. Ut eaque et nulla aut dolore.\nNumquam velit aut est. Quis sed et quia sed neque et atque. Consequatur doloribus quia aut aliquam. Provident fugit similique tenetur placeat voluptas voluptatem neque assumenda.",
    id: 11
   },
-  // {
-  //  title: "navigate wireless driver",
-  //  author: "Jaquan",
-  //  createdAt: "2030-10-01T03:01:10.954Z",
-  //  image: "http://loremflickr.com/640/480",
-  //  body: "Voluptas iusto qui similique. Eveniet libero veniam. Doloribus accusantium laborum suscipit eius enim aut neque occaecati.\nHic rerum suscipit provident consequatur eum. Dolor necessitatibus sapiente quis quas aut dolore sequi perspiciatis aut. Culpa ut debitis sed debitis praesentium dolorem facere.\nReiciendis vel sint commodi. Consequatur tenetur molestiae et dolore voluptas voluptatem occaecati ea occaecati. Dolor animi iusto. Quisquam sed autem aperiam eos temporibus porro modi. Voluptatem nesciunt sed doloribus possimus quis enim ipsa. Recusandae ipsum voluptatem reiciendis quam.",
-  //  id: 12
-  // },
+  {
+   title: "navigate wireless driver",
+   author: "Jaquan",
+   createdAt: "2030-10-01T03:01:10.954Z",
+   image: "http://loremflickr.com/640/480",
+   body: "Voluptas iusto qui similique. Eveniet libero veniam. Doloribus accusantium laborum suscipit eius enim aut neque occaecati.\nHic rerum suscipit provident consequatur eum. Dolor necessitatibus sapiente quis quas aut dolore sequi perspiciatis aut. Culpa ut debitis sed debitis praesentium dolorem facere.\nReiciendis vel sint commodi. Consequatur tenetur molestiae et dolore voluptas voluptatem occaecati ea occaecati. Dolor animi iusto. Quisquam sed autem aperiam eos temporibus porro modi. Voluptatem nesciunt sed doloribus possimus quis enim ipsa. Recusandae ipsum voluptatem reiciendis quam.",
+   id: 12
+  },
  ];
 
 
@@ -59,7 +60,7 @@ describe('PostService', () => {
   });
 
   it('should call getAllPosts and return an array of BlogPosts', () => {
-			
+
     // 1
     service.getBlogPosts().subscribe((res) => {
       // console.log(res)
@@ -70,14 +71,84 @@ describe('PostService', () => {
     });
 
     //3
-    const req = httpController.expectOne({
-      method: 'GET',
-      url: `${BASE_URL}`,
-    });
+    const req = httpController.expectOne(service.BASE_URL);
 
+    expect(req.cancelled).toBeFalsy();
+  
     //4
     req.flush(expectedBlogPosts);
+    httpController.verify();
   });
+
+  it('should call editPost and return the updated post from the API', () => {
+    const updatedPost: BlogPost =  {
+      title: "navigate wireless driver",
+      author: "Test Author 9/13",
+      createdAt: "2030-10-01T03:01:10.954Z",
+      image: "http://loremflickr.com/640/480",
+      body: "Voluptas iusto qui similique. Eveniet libero veniam. Doloribus accusantium laborum suscipit eius enim aut neque occaecati.\nHic rerum suscipit provident consequatur eum. Dolor necessitatibus sapiente quis quas aut dolore sequi perspiciatis aut. Culpa ut debitis sed debitis praesentium dolorem facere.\nReiciendis vel sint commodi. Consequatur tenetur molestiae et dolore voluptas voluptatem occaecati ea occaecati. Dolor animi iusto. Quisquam sed autem aperiam eos temporibus porro modi. Voluptatem nesciunt sed doloribus possimus quis enim ipsa. Recusandae ipsum voluptatem reiciendis quam.",
+      id: 12
+     }
+
+    service.updateBlogPost(expectedBlogPosts[3], 12).subscribe((data) => {
+      console.log(data)
+      expect(data).toEqual(updatedPost);
+    });
+
+    const req = httpController.expectOne({
+      method: 'PUT',
+      url: `${BASE_URL}12`,
+    });
+
+    req.flush(updatedPost);
+});
+
+it('should call deletePost and return the updated posts array from the API', () => {
+  const deletedPost: BlogPost =  {
+    title: "navigate wireless driver",
+    author: "Test Author 9/13",
+    createdAt: "2030-10-01T03:01:10.954Z",
+    image: "http://loremflickr.com/640/480",
+    body: "Voluptas iusto qui similique. Eveniet libero veniam. Doloribus accusantium laborum suscipit eius enim aut neque occaecati.\nHic rerum suscipit provident consequatur eum. Dolor necessitatibus sapiente quis quas aut dolore sequi perspiciatis aut. Culpa ut debitis sed debitis praesentium dolorem facere.\nReiciendis vel sint commodi. Consequatur tenetur molestiae et dolore voluptas voluptatem occaecati ea occaecati. Dolor animi iusto. Quisquam sed autem aperiam eos temporibus porro modi. Voluptatem nesciunt sed doloribus possimus quis enim ipsa. Recusandae ipsum voluptatem reiciendis quam.",
+    id: 12
+   }
+
+  service.deleteBlogPost(12).subscribe((data) => {
+    console.log(data)
+    expect(data).toEqual(deletedPost);
+  });
+
+  const req = httpController.expectOne({
+    method: 'DELETE',
+    url: `${BASE_URL}12`,
+  });
+
+  req.flush(deletedPost);
+});
+
+it('should call addPost and return the added post from the API', () => {
+  const newPost: BlogPost =  {
+    title: "study react",
+    author: "Test Author2 9/13",
+    createdAt: "2030-10-01T03:01:10.954Z",
+    image: "http://loremflickr.com/640/480",
+    body: "Voluptas iusto qui similique. Eveniet libero veniam. Doloribus accusantium laborum suscipit eius enim aut neque occaecati.\nHic rerum suscipit provident consequatur eum. Dolor necessitatibus sapiente quis quas aut dolore sequi perspiciatis aut. Culpa ut debitis sed debitis praesentium dolorem facere.\nReiciendis vel sint commodi. Consequatur tenetur molestiae et dolore voluptas voluptatem occaecati ea occaecati. Dolor animi iusto. Quisquam sed autem aperiam eos temporibus porro modi. Voluptatem nesciunt sed doloribus possimus quis enim ipsa. Recusandae ipsum voluptatem reiciendis quam.",
+    id:20
+  }
+
+  service.postBlogPost(newPost).subscribe((data) => {
+    console.log(data)
+    expect(data).toEqual(newPost);
+  });
+
+  const req = httpController.expectOne({
+    method: 'POST',
+    url: `${BASE_URL}`,
+  });
+
+  req.flush(newPost);
+});
+
 
 }
 

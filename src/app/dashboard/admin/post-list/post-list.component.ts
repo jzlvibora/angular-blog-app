@@ -24,8 +24,9 @@ export class PostListComponent implements OnInit {
 
   getBlogPosts(){
     this.blogPostService.getBlogPosts().subscribe((res)=>{
+      console.log(res)
       this.blogPosts=res;
-      console.log(this.blogPosts)
+      // console.log(this.blogPosts)
       this.isLoading=false
     })
 

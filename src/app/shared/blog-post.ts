@@ -4,5 +4,5 @@ export interface BlogPost {
     author:string,
     body:string,
     image:string,
-    createdAt:Date
+    createdAt:string
 }

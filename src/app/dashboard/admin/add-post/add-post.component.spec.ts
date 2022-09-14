@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddPostComponent } from './add-post.component';
@@ -8,7 +9,8 @@ describe('AddPostComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddPostComponent ]
+      declarations: [ AddPostComponent ],
+      imports:[HttpClientTestingModule]
     })
     .compileComponents();
 

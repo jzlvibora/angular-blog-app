@@ -44,7 +44,7 @@ export class EditPostComponent implements OnInit {
       author: new FormControl(this.blogPost?.author,[Validators.required]),
       image:new FormControl(this.blogPost?.image,[Validators.required]),
       body: new FormControl(this.blogPost?.body, [Validators.required]),
-      createdAt:new FormControl(this.blogPost?.createdAt.toLocaleDateString().slice(0,10), [Validators.required])
+      createdAt:new FormControl(this.blogPost?.createdAt, [Validators.required])
     })
   }
 

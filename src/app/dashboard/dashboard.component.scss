@@ -15,13 +15,13 @@
 
 
 mat-sidenav{
-  background:$primary-color !important;
+  background:rgb(241, 216, 216) !important;
   color:$font-secondary-color !important;
   padding: 0;
 }
 
 a{
-  color:white !important;
+  color:rgb(105, 98, 98) !important;
 }
 
 mat-icon{
@@ -52,7 +52,9 @@ mat-icon{
 //  display: flex;
 //  justify-content: center;
 //  align-items: center;
-margin-left: 20%
+margin-left: 20%;
+margin-bottom:1rem;
+margin-top:1rem;
 }
 
 

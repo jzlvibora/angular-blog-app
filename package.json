@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
     "bootstrap": "5.0",
+    "ng-mocks": "^14.2.1",
     "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.32",

@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
 import { PostService } from 'src/app/services/post/post.service';
 import { BlogPost } from 'src/app/shared/blog-post';
@@ -15,6 +14,7 @@ describe('PostListComponent', () => {
   let component:PostListComponent;
   let fixture:ComponentFixture<PostListComponent>
   let mockPostService:jasmine.SpyObj<PostService>
+  let idCell:HTMLTableCellElement
   const expectedBlogPosts: BlogPost[] = [
     {
       title: 'copy online pixel',
@@ -64,22 +64,43 @@ describe('PostListComponent', () => {
     mockPostService.getBlogPosts.and.returnValue(of(expectedBlogPosts))
 
     fixture.detectChanges();
+    idCell=fixture.nativeElement.querySelectorAll('.idCell')
   });
+
+  it('should display correct id number', ()=>{
+    console.log(idCell)
+    expect(idCell.textContent).toBe('10')
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-
-  it('should test the table', () => {
+  it('should bind inputs', () => {
     const targetComponent=MockRender(PostListComponent).point.componentInstance;
     const tableEl=ngMocks.reveal(['mat-table']);
     expect(ngMocks.input(tableEl,'dataSource')).toBe(targetComponent.blogPosts)
+    expect(ngMocks.input(tableEl,'dataSource').length).toBe(3);
     // expect(component.blogPosts).toEqual(expectedBlogPosts);
     // let tableRows = fixture.nativeElement.querySelectorAll('mat-table')
     // expect(tableRows.length).toBe(3);
 
   });
+
+  // it('should display matcell data correctly ', ()=>{
+  //   MockRender(PostListComponent);
+  //   // looking for the table and container
+  //   const tableEl = ngMocks.reveal(['mat-table']);
+  //   const containerEl = ngMocks.reveal(['mat-cell', 'id']);
+  //   // checking that there are no artifacts around
+  //   expect(ngMocks.formatHtml(containerEl)).toEqual('');
+  //   const matcell = ngMocks.reveal(containerEl, [
+  //     'mat-cell',
+  //   ]);
+  //   ngMocks.render(tableEl.componentInstance,matcell);
+  //   expect(ngMocks.formatHtml(matcell)).toEqual(' <td mat-cell> {{element.id}} </td>')
+  
+  // })
 });
 
 

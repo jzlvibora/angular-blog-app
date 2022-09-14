@@ -29,7 +29,15 @@ export class PostListComponent implements OnInit {
       // console.log(this.blogPosts)
       this.isLoading=false
     })
+  }
 
+  onNewBlogPost(){
+    this.router.navigate(['new'], {relativeTo:this.route})
+  }
+
+  onEditBlogPost(id:number){
+    console.log(id)
+    this.router.navigate([`edit/${id}`], {relativeTo:this.route})
   }
 
   onDeleteBlogPost(id:number){
@@ -52,21 +60,7 @@ export class PostListComponent implements OnInit {
             'success'
           )
         })
-        
       }
     }) 
   }
-  
-
-  onNewBlogPost(){
-    this.router.navigate(['new'], {relativeTo:this.route})
-  }
-
-  onEditBlogPost(id:number){
-    console.log(id)
-    this.router.navigate([`edit/${id}`], {relativeTo:this.route})
-  }
-
-
-
 }

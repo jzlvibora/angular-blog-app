@@ -65,7 +65,7 @@ describe('PostService', () => {
     service.getBlogPosts().subscribe((res) => {
       // console.log(res)
       // console.log(expectedBlogPosts)
-    console.log(res)
+    // console.log(res)
       //2
       expect(expectedBlogPosts).toBe(res);
     });
@@ -91,7 +91,7 @@ describe('PostService', () => {
      }
 
     service.updateBlogPost(expectedBlogPosts[3], 12).subscribe((data) => {
-      console.log(data)
+      // console.log(data)
       expect(data).toEqual(updatedPost);
     });
 
@@ -114,7 +114,7 @@ it('should call deletePost and return the updated posts array from the API', () 
    }
 
   service.deleteBlogPost(12).subscribe((data) => {
-    console.log(data)
+    // console.log(data)
     expect(data).toEqual(deletedPost);
   });
 
@@ -137,7 +137,7 @@ it('should call addPost and return the added post from the API', () => {
   }
 
   service.postBlogPost(newPost).subscribe((data) => {
-    console.log(data)
+    // console.log(data)
     expect(data).toEqual(newPost);
   });
 

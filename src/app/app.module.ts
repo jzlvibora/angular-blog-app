@@ -5,9 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
-import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { FooterComponent } from './footer/footer.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -19,16 +17,17 @@ import { HomeLayoutComponent } from './home-layout/home-layout.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    TruncatePipe,
     FooterComponent,
     PageNotFoundComponent,
     LoginComponent,
     LoginLayoutComponent,
     HomeLayoutComponent,
+   
   
   
   ],
@@ -36,8 +35,6 @@ import { HomeLayoutComponent } from './home-layout/home-layout.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    FormsModule,
     MaterialModule,
     HttpClientModule,  
   ],

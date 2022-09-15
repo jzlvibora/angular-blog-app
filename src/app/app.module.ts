@@ -16,8 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditPostComponent } from './dashboard/admin/edit-post/edit-post.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PostListComponent } from './dashboard/admin/post-list/post-list.component';
-import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { DatePipe } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { HomeLayoutComponent } from './home-layout/home-layout.component';
 
 
 
@@ -34,6 +36,9 @@ import { DatePipe } from '@angular/common';
     EditPostComponent,
     PostListComponent,
     PageNotFoundComponent,
+    LoginComponent,
+    LoginLayoutComponent,
+    HomeLayoutComponent,
   
   
   ],
@@ -44,13 +49,7 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
-    HttpClientModule,
-    DashboardRoutingModule,
-   
-  
-  
-    
-    
+    HttpClientModule,  
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

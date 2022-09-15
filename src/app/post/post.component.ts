@@ -8,21 +8,8 @@ import { BlogPost } from 'src/app/shared/blog-post';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  blogPosts!:BlogPost[];
-  isLoading=true;
-
-  constructor(private blogPostService:PostService) { }
-
   ngOnInit(): void {
-    this.getBlogPosts();
+    
   }
-
-  getBlogPosts(){
-    this.blogPostService.getBlogPosts().subscribe((res)=>{
-      this.blogPosts=res
-      this.isLoading=false;
-    })
-
-  }
-
+ 
 }

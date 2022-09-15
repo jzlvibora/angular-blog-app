@@ -4,20 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { PostComponent } from './dashboard/post/post.component';
-import { AdminComponent } from './dashboard/admin/admin.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material/material.module';
-import { AddPostComponent } from './dashboard/admin/add-post/add-post.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EditPostComponent } from './dashboard/admin/edit-post/edit-post.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PostListComponent } from './dashboard/admin/post-list/post-list.component';
-import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { DatePipe } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { HomeLayoutComponent } from './home-layout/home-layout.component';
 
 
 
@@ -25,15 +22,13 @@ import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    PostComponent,
-    AdminComponent,
+    NavigationComponent,
     TruncatePipe,
     FooterComponent,
-    AddPostComponent,
-    EditPostComponent,
-    PostListComponent,
     PageNotFoundComponent,
+    LoginComponent,
+    LoginLayoutComponent,
+    HomeLayoutComponent,
   
   
   ],
@@ -44,13 +39,7 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
-    HttpClientModule,
-    DashboardRoutingModule,
-   
-  
-  
-    
-    
+    HttpClientModule,  
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

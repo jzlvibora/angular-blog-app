@@ -26,7 +26,7 @@ export class AddPostComponent implements OnInit {
       title: new FormControl(null,[Validators.required]),
       author: new FormControl(null,[Validators.required]),
       image:new FormControl(null,[Validators.required]),
-      description: new FormControl(null, [Validators.required]),
+      body: new FormControl(null, [Validators.required]),
       createdAt:new FormControl(Date.now().toLocaleString(), [Validators.required])
     })
   }

@@ -3,7 +3,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <img src="../../assets/female-avatar.png" class="profile-avatar">
+    <img src="../../assets/img/comment-2.jpg" class="profile-avatar">
     <mat-nav-list>
       <a mat-list-item routerLink="/posts" ><mat-icon>auto_stories</mat-icon> Posts</a>
       <a mat-list-item ><mat-icon>comment</mat-icon>Comments</a>
@@ -21,7 +21,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span class="logo"><img src="../../assets/logo1.png" class="logo-img"> ngBlog </span>
+      <span class="logo"><img src="../../assets/img/logo.png" class="logo-img"> ngBlog </span>
     </mat-toolbar>
     <!-- Add Content Here -->
       <router-outlet></router-outlet>

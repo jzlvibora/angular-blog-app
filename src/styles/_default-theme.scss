@@ -10,7 +10,7 @@ $dif-blue-palette: (
  50: #B3DAFF,
  100: #8DB6FF,
  200: #6893DE,
- 300: #A8D0E6,
+ 300: #0CC,
  400: #374785,
  500: #374785,
  600: #374785,
@@ -34,11 +34,11 @@ $dif-blue-palette: (
 );
 
 $dif-gray-palette: (
- 50: #F76C6C,
- 100: #F76C6C,
- 200: #F76C6C,
+ 50: #e7e7e7,
+ 100:  #e7e7e7,
+ 200: #f0f0f0,
  300: #525252,
- 400: #2B2B2B,
+ 400:  #e7e7e7,
  500: #2B2B2B,
  600: #2B2B2B,
  700: #2B2B2B,
@@ -46,11 +46,11 @@ $dif-gray-palette: (
  900: #2B2B2B,
 
  contrast: (
-   50: rgba(white, 1),
-   100: rgba(white, 1),
+   50: rgba(rgb(19, 17, 17), 1),
+   100: rgba(rgb(10, 10, 10), 1),
    200: rgba(white, 1),
    300: white,
-   400: white,
+   400: rgb(10, 10, 10),
    500: white,
    600: white,
    700: white,

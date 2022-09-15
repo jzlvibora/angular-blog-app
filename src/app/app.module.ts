@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
-import { PostComponent } from './post/post.component';
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +23,6 @@ import { HomeLayoutComponent } from './home-layout/home-layout.component';
   declarations: [
     AppComponent,
     NavigationComponent,
-    PostComponent,
     TruncatePipe,
     FooterComponent,
     PageNotFoundComponent,

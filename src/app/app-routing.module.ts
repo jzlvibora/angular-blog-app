@@ -22,8 +22,7 @@ children:[
   {path:'', redirectTo:'admin', pathMatch:'full'},
   {path:'admin', component:AdminComponent, 
    children:[
-    {path:'', redirectTo:'list', pathMatch:'full'},
-    {path:'list', component:PostListComponent},
+    {path:'', component:PostListComponent},
     {path:'new', component:AddPostComponent},
     {path:'edit/:id', component:EditPostComponent}
    ]},

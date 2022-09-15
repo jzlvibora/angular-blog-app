@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post/post.service';
 import { BlogPost } from 'src/app/shared/blog-post';
 
@@ -12,7 +13,7 @@ export class PostListComponent implements OnInit {
   blogPosts!:BlogPost[];
   isLoading=true;
 
-  constructor(private blogPostService:PostService) { }
+  constructor(private blogPostService:PostService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     this.getBlogPosts();
@@ -24,6 +25,11 @@ export class PostListComponent implements OnInit {
       this.isLoading=false;
     })
 
+  }
+
+  onViewPost(id:number){
+    console.log(id)
+    this.router.navigate([`page/${id}`], {relativeTo:this.route})
   }
 
 }

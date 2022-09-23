@@ -1,1 +1,51 @@
-<p>login works!</p>
+<mat-toolbar color="accent">
+    <span class="logo"><img src="../../assets/img/logo.png" class="logo-img"> ngBlog </span>
+  </mat-toolbar>
+
+<mat-card style="width:30%; margin:auto" class="text-center mt-5 py-5 card-center">
+    <div class="text-center">
+      <h2><strong>Sign in</strong></h2>
+      <!-- <div  class="alert alert-danger alert-dismissible fade show " role="alert" style=" margin:auto">
+        <strong>Error!</strong> {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div> -->
+      <form novalidate class="d-flex-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="example-container">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput placeholder="Username" formControlName="username">
+              <mat-error *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched) && loginForm.get('username')?.errors?.['required']">
+                Username is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="mt-top-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" placeholder="Password" formControlName="password" >    
+              <!-- <mat-error *ngIf="!loginForm.get('password')?.errors?.['required']">
+                Password length must be greater than or equal to 8 and password must contain one or more uppercase , lowercase , numeric and special characters
+              </mat-error> -->
+              <mat-error *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) && loginForm.get('password')?.errors?.['required']">
+                Password is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="mt-top btn-container">
+            <button  type="submit" class="login-btn" mat-raised-button color="primary" mat-button>Sign In</button>
+          </div>
+          <p class="content-divider center mt-top">
+            <span>or</span>
+          </p>
+          <div class=" btn-container mt-top ">
+            <button type="button" class="login-btn " mat-raised-button mat-button color="warn">Sign Up</button>
+          </div>
+          <!-- <div class="mt-3 btn-container text-center d-flex-center mx-4">
+            <asl-google-signin-button ></asl-google-signin-button>
+          </div>  -->
+        </div>
+        </form>
+          </div>
+  </mat-card>
+  

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 
 @Component({
@@ -9,10 +10,15 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
+  isSignedin=false;
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
+    this.isSignedin=this.authService.isUserSignedin();
+    if(this.isSignedin){
+      this.router.navigateByUrl('posts')
+    }
     this.loginForm=this.buildForm();
   }
 
@@ -39,7 +45,7 @@ export class LoginComponent implements OnInit {
       return
     }
     this.authService.signin(this.loginForm.value).subscribe((res)=>{
-      console.log(this.authService.getToken())
+      this.router.navigateByUrl('posts')
     },)
 
   }

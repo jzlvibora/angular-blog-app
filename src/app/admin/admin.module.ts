@@ -6,9 +6,9 @@ import { AdminComponent } from './admin.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { PostListComponent } from './post-list/post-list.component';
-import { TruncatePipe } from '../shared/pipes/truncate.pipe';
 import { MaterialModule } from '../shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,14 +17,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddPostComponent,
     EditPostComponent,
     PostListComponent,
-    TruncatePipe
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

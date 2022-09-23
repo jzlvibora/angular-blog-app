@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { HomeLayoutComponent } from './home-layout/home-layout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -37,6 +38,8 @@ import { HomeLayoutComponent } from './home-layout/home-layout.component';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,  
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

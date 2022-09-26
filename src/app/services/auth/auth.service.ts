@@ -11,8 +11,12 @@ export class AuthService {
   BASE_URL = 'http://localhost:8080/';
   constructor(private http: HttpClient) {}
 
-  signup(request:SignupRequest):Observable<any> {
-   return this.http.post<any>(this.BASE_URL + 'signup', request)
+  signup(request: SignupRequest): Observable<any> {
+    return this.http.post<SignupRequest>(this.BASE_URL + 'signup', request, {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json'
+      }),
+    });
   }
 
   getToken(): any {
@@ -21,23 +25,26 @@ export class AuthService {
   }
 
   signin(request: SigninRequest): Observable<any> {
-    return this.http.post<any>(this.BASE_URL + 'signin', request, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    }).pipe(map((res:any)=>{
-      sessionStorage.setItem('user', request.username);
-      sessionStorage.setItem('token', 'HTTP_TOKEN' + res.token)
-    }));
+    return this.http
+      .post<SigninRequest>(this.BASE_URL + 'signin', request, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+      })
+      .pipe(
+        map((res: any) => {
+          sessionStorage.setItem('user', request.username);
+          sessionStorage.setItem('token', 'HTTP_TOKEN' + res.token);
+        })
+      );
   }
 
   isUserSignedin() {
-    return sessionStorage.getItem('token')!==null;
+    return sessionStorage.getItem('token') !== null;
   }
 
-  signout(){
+  signout() {
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
   }
-
 }

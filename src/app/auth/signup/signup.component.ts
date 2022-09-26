@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
       return
     }
     this.authService.signup(this.signupForm.value).subscribe((res)=>{
-      this.router.navigateByUrl('posts')
+      console.log(res.message)
     },)
 
   }

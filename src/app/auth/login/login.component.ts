@@ -50,4 +50,8 @@ export class LoginComponent implements OnInit {
 
   }
 
+  redirectToSignup(){
+    this.router.navigate(['auth/signup'])
+  }
+
 }

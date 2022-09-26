@@ -2,18 +2,23 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { SigninRequest } from 'src/app/shared/signin-request';
+import { SignupRequest } from 'src/app/shared/signup-request';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  BASE_URL = 'http://localhost:8080/';
+  constructor(private http: HttpClient) {}
+
+  signup(request:SignupRequest):Observable<any> {
+   return this.http.post<any>(this.BASE_URL + 'signup', request)
+  }
+
   getToken(): any {
     let token = sessionStorage.getItem('token') as string;
     return token;
   }
-
-  BASE_URL = 'http://localhost:8080/';
-  constructor(private http: HttpClient) {}
 
   signin(request: SigninRequest): Observable<any> {
     return this.http.post<any>(this.BASE_URL + 'signin', request, {

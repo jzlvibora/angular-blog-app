@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
       return
     }
     this.authService.signup(this.signupForm.value).subscribe((res)=>{
-      console.log(res.message)
+      console.log(res)
     },)
 
   }

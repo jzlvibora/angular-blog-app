@@ -14,8 +14,9 @@ export class AuthService {
   signup(request: SignupRequest): Observable<any> {
     return this.http.post<SignupRequest>(this.BASE_URL + 'signup', request, {
       headers: new HttpHeaders({
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
       }),
+      responseType:'text' as 'json'
     });
   }
 

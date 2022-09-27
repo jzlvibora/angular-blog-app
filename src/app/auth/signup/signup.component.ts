@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertsService } from 'src/app/admin/alerts.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +15,7 @@ export class SignupComponent implements OnInit {
   signupForm!:FormGroup;
   isSignedin=false;
 
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(private authService:AuthService, private router:Router, private alertService:AlertsService) { }
 
   ngOnInit(): void {
     this.isSignedin=this.authService.isUserSignedin();
@@ -50,7 +52,10 @@ export class SignupComponent implements OnInit {
       return
     }
     this.authService.signup(this.signupForm.value).subscribe((res)=>{
-      console.log(res.message)
+      console.log(res);
+      this.alertService.registrationSuccessNotification(res);
+      this.signupForm.reset();
+     
     },)
 
   }

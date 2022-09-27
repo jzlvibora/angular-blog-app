@@ -45,7 +45,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [DatePipe,{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

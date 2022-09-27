@@ -14,8 +14,9 @@ export class AuthService {
   signup(request: SignupRequest): Observable<any> {
     return this.http.post<SignupRequest>(this.BASE_URL + 'signup', request, {
       headers: new HttpHeaders({
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
       }),
+      responseType:'text' as 'json'
     });
   }
 
@@ -34,7 +35,7 @@ export class AuthService {
       .pipe(
         map((res: any) => {
           sessionStorage.setItem('user', request.username);
-          sessionStorage.setItem('token', 'HTTP_TOKEN' + res.token);
+          sessionStorage.setItem('token', 'HTTP_TOKEN ' + res.token);
         })
       );
   }

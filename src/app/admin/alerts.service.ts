@@ -29,4 +29,12 @@ export class AlertsService {
       icon: 'info',
     })
   }
+
+  registrationSuccessNotification(response:string){
+    Swal.fire({
+      title:'Successful',
+      text:response,
+      icon:'success'
+    })
+  }
 }

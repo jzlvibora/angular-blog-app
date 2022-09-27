@@ -34,7 +34,7 @@ export class AuthService {
       .pipe(
         map((res: any) => {
           sessionStorage.setItem('user', request.username);
-          sessionStorage.setItem('token', 'HTTP_TOKEN' + res.token);
+          sessionStorage.setItem('token', 'HTTP_TOKEN ' + res.token);
         })
       );
   }

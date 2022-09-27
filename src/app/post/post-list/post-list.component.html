@@ -7,7 +7,7 @@
               <mat-card-title>{{blogPost.title | truncate: 20}}</mat-card-title>
               <mat-card-subtitle><b>{{blogPost.author}}</b> | <span><i>{{blogPost.createdAt|date}}</i></span></mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image [src]=blogPost.image alt="{{blogPost.image}}">
+            <img class="blog-image" mat-card-image [src]=blogPost.image alt="{{blogPost.image}}">
             <mat-card-content>
               <p>
                 {{blogPost.body | truncate: 60}}

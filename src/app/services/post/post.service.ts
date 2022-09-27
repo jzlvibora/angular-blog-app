@@ -17,7 +17,8 @@ export class PostService {
   public getBlogPosts():Observable<BlogPost[]>{
     return this.http.get<BlogPost[]>(
       this.BASE_URL, 
-      {headers:new HttpHeaders({'Authorization':this.authService.getToken()})});
+      // {headers:new HttpHeaders({'Authorization':this.authService.getToken()})}
+      );
   }
 
   public getBlogPost(id:number):Observable<BlogPost>{

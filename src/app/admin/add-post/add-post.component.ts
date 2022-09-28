@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostService } from 'src/app/services/post/post.service';
+import { TagService } from 'src/app/services/tag/tag.service';
 import { BlogPost } from 'src/app/shared/blog-post';
 import { PostRequest } from 'src/app/shared/post-request';
+import { Tag } from 'src/app/shared/tag';
 import { AlertsService } from '../alerts.service';
 
 @Component({
@@ -22,14 +24,17 @@ export class AddPostComponent implements OnInit {
     // createdAt: '',
     likes: 0,
     tag: {
-      id: 0
+      tagName: ''
     }
   };
 
-  constructor(private router:Router,private blogPostService:PostService, private alertService:AlertsService) { }
+  tags!: Tag[] ;
+
+  constructor(private router:Router,private blogPostService:PostService, private alertService:AlertsService, private tagService:TagService) { }
 
   ngOnInit(): void {
     this.form=this.buildForm();
+    console.log(this.getTags())
   }
 
   private buildForm():FormGroup{
@@ -40,7 +45,7 @@ export class AddPostComponent implements OnInit {
       body: new FormControl(null, [Validators.required]),
       likes:new FormControl(null,[Validators.required]),
       createdAt:new FormControl(Date.now().toLocaleString(), [Validators.required]),
-      tagId:new FormControl(null,[Validators.required])
+      tagName:new FormControl(null,[Validators.required])
     })
   }
 
@@ -65,13 +70,19 @@ export class AddPostComponent implements OnInit {
       this.alertService.infoNotification();
       return
     }
-    this.blogPostService.postBlogPost({title:this.f['title'].value, image:this.f['image'].value, body:this.f['body'].value, likes:this.f['likes'].value, tag: { id: this.f['tagId'].value} }).subscribe((res)=>{
+    this.blogPostService.postBlogPost({title:this.f['title'].value, image:this.f['image'].value, body:this.f['body'].value, likes:this.f['likes'].value, tag: { tagName: this.f['tagName'].value} }).subscribe((res)=>{
       console.log(res);
-      
+      this.alertService.successNotification();
       this.form.reset();
     },(err:HttpErrorResponse)=>{
       this.error=err.message;
       this.alertService.errorNotification(err.message)
+    })
+  }
+
+  getTags(){
+    this.tagService.getAllTags().subscribe((res)=>{
+      this.tags=res
     })
   }
 

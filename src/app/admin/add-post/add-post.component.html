@@ -19,12 +19,22 @@
 </mat-form-field>
 
 <mat-form-field appearance="fill">
+    <mat-label>Select Tag</mat-label>
+    <mat-select formControlName="tagName">
+      <mat-option *ngFor="let tag of tags" [value]="tag.tagName">
+        {{tag.tagName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
+<!-- <mat-form-field appearance="fill">
     <mat-label>Tag</mat-label>
     <input type="number" matInput formControlName="tagId">
     <mat-error *ngIf="form.get('tagId')?.invalid && (form.get('tagId')?.dirty || form.get('tagId')?.touched) && form.get('tagId')?.errors?.['required']">
         Tag is required
     </mat-error>
-</mat-form-field>
+</mat-form-field> -->
 
 <mat-form-field appearance="fill">
     <mat-label>Likes</mat-label>

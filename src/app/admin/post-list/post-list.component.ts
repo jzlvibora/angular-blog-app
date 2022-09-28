@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/services/post/post.service';
+import { TagService } from 'src/app/services/tag/tag.service';
 import { BlogPost } from 'src/app/shared/blog-post';
 import Swal from 'sweetalert2';
 
@@ -13,13 +14,14 @@ export class PostListComponent implements OnInit {
 
   
   blogPosts:BlogPost[]=[];
-  displayedColumns: string[] = [ 'id', 'title', 'author', 'body', 'image', 'createdAt', 'action'] ;
+  displayedColumns: string[] = [ 'id', 'title', 'tag', 'author', 'body', 'image', 'createdAt', 'action'] ;
   isLoading:boolean=true;
 
-  constructor(private router:Router, private route:ActivatedRoute, private blogPostService:PostService) { }
+  constructor(private router:Router, private route:ActivatedRoute, private blogPostService:PostService, private tagService:TagService) { }
 
   ngOnInit(): void {
   this.getBlogPosts();
+  console.log(this.getTags())
   }
 
   getBlogPosts(){
@@ -62,5 +64,11 @@ export class PostListComponent implements OnInit {
         })
       }
     }) 
+  }
+
+  getTags(){
+    this.tagService.getAllTags().subscribe((res)=>{
+      console.log(res)
+    })
   }
 }

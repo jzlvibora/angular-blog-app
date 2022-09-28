@@ -4,5 +4,10 @@ export interface BlogPost {
     author:string,
     body:string,
     image:string,
-    createdAt:string
+    createdAt:string,
+    likes:number,
+    tag:{
+        id:number
+    }
 }
+

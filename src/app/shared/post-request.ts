@@ -6,6 +6,6 @@ export interface PostRequest {
     // createdAt:string,
     likes:number,
     tag:{
-        id:number
+        tagName:string
     }
 }

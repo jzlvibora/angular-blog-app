@@ -7,7 +7,9 @@ export interface BlogPost {
     createdAt:string,
     likes:number,
     tag:{
-        id:number
+        id:number,
+        tagName:string,
+        description:string
     }
 }
 

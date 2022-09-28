@@ -38,7 +38,7 @@ export class PostService {
     return this.http.post(this.BASE_URL, blogPosts);
   }
 
-  public updateBlogPost(blogPost:BlogPost, id:number){
+  public updateBlogPost(blogPost:PostRequest, id:number){
     return this.http.put(`${this.BASE_URL}${id}`, blogPost);
   }
 

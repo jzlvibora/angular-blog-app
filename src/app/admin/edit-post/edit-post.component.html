@@ -18,9 +18,36 @@
     </mat-error>
 </mat-form-field>
 
+
+<mat-form-field appearance="fill">
+    <mat-label>Select Tag</mat-label>
+    <mat-select formControlName="tagName">
+      <mat-option *ngFor="let tag of tags" [value]="tag.tagName">
+        {{tag.tagName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
+<!-- <mat-form-field appearance="fill">
+    <mat-label>Tag</mat-label>
+    <input type="number" matInput formControlName="tagId">
+    <mat-error *ngIf="form.get('tagId')?.invalid && (form.get('tagId')?.dirty || form.get('tagId')?.touched) && form.get('tagId')?.errors?.['required']">
+        Tag is required
+    </mat-error>
+</mat-form-field> -->
+
+<!-- <mat-form-field appearance="fill">
+    <mat-label>Likes</mat-label>
+    <input type="number" matInput formControlName="likes">
+    <mat-error *ngIf="form.get('tlikes')?.invalid && (form.get('likes')?.dirty || form.get('likes')?.touched) && form.get('likes')?.errors?.['required']">
+        Likes is required
+    </mat-error>
+</mat-form-field> -->
+
 <mat-form-field appearance="fill">
     <mat-label>Author</mat-label>
-    <input matInput formControlName="author">
+    <input matInput formControlName="author" [disabled]="true">
     <mat-error *ngIf="form.get('author')?.invalid && (form.get('author')?.dirty || form.get('author')?.touched) && form.get('author')?.errors?.['required']">
         Author is required
     </mat-error>
@@ -33,17 +60,17 @@
     </mat-error>
 </mat-form-field>
 <mat-form-field appearance="fill">
-    <mat-label>Description</mat-label>
+    <mat-label>Body</mat-label>
     <textarea matInput placeholder="Ex. It makes me feel..." rows="5" formControlName="body"></textarea>
     <mat-error *ngIf="form.get('body')?.invalid && (form.get('body')?.dirty || form.get('body')?.touched) && form.get('body')?.errors?.['required']">
-        Description is required
+        Body is required
     </mat-error>
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Date</mat-label>
     <input type="date" matInput formControlName="createdAt">
     <mat-error *ngIf="form.get('createdAt')?.invalid && (form.get('createdAt')?.dirty || form.get('createdAt')?.touched) && form.get('createdAt')?.errors?.['required']">
-        Image is required
+        Date is required
     </mat-error>
 </mat-form-field>
 

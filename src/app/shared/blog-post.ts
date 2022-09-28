@@ -5,7 +5,7 @@ export interface BlogPost {
     body:string,
     image:string,
     createdAt:string,
-    likes:number,
+    likes?:number,
     tag:{
         id:number,
         tagName:string,

@@ -20,8 +20,8 @@
 
 
 <mat-form-field appearance="fill">
-    <mat-label>Select Tag</mat-label>
-    <mat-select formControlName="tagName">
+    <!-- <mat-label>{{postRequest?.tag?.tagName}}</mat-label> -->
+    <mat-select formControlName="tagName" [(value)]="blogPost.tag.tagName">
       <mat-option *ngFor="let tag of tags" [value]="tag.tagName">
         {{tag.tagName}}
       </mat-option>
@@ -47,7 +47,7 @@
 
 <mat-form-field appearance="fill">
     <mat-label>Author</mat-label>
-    <input matInput formControlName="author" [disabled]="true">
+    <input matInput formControlName="author">
     <mat-error *ngIf="form.get('author')?.invalid && (form.get('author')?.dirty || form.get('author')?.touched) && form.get('author')?.errors?.['required']">
         Author is required
     </mat-error>

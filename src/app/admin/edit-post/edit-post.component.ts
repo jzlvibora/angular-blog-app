@@ -64,7 +64,7 @@ export class EditPostComponent implements OnInit {
       body: new FormControl(this.blogPost?.body, [Validators.required]),
       createdAt:new FormControl(this.blogPost?.createdAt, [Validators.required]),
       likes:new FormControl({value: this.blogPost?.likes, disabled: true} ,[Validators.required]),
-      tagName:new FormControl(this.blogPost?.tag.tagName, [Validators.required])
+      tagName:new FormControl(this.blogPost?.tag?.tagName, [Validators.required])
     })
   }
 
@@ -108,6 +108,7 @@ export class EditPostComponent implements OnInit {
     this.form.controls['createdAt'].setValue(blogPost?.createdAt);
     this.form.controls['body'].setValue(blogPost?.body);
     this.form.controls['image'].setValue(blogPost?.image);
+    this.form.controls['tagName'].setValue(blogPost?.tag?.tagName)
   }
 
   getTags(){
@@ -115,6 +116,8 @@ export class EditPostComponent implements OnInit {
       this.tags=res
     })
   }
+
+ 
 
 
 }

@@ -15,6 +15,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule} from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 
 
@@ -38,7 +40,9 @@ import { MatInputModule} from '@angular/material/input'
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   exports: [
     CommonModule,
@@ -57,7 +61,9 @@ import { MatInputModule} from '@angular/material/input'
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers:[{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}]
 })

@@ -4,7 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post/post.service';
+import { TagService } from 'src/app/services/tag/tag.service';
 import { BlogPost } from 'src/app/shared/blog-post';
+import { PostRequest } from 'src/app/shared/post-request';
+import { Tag } from 'src/app/shared/tag';
 import { AlertsService } from '../alerts.service';
 
 @Component({
@@ -19,12 +22,27 @@ export class EditPostComponent implements OnInit {
   error:string|null=null;
   isSubmitSuccessful:boolean=false;
   isLoading=true;
+
+  postRequest: PostRequest={
+    title:'',
+    body: '',
+    image: '',
+    // createdAt: '',
+    likes: 0,
+    tag: {
+      tagName: ''
+    }
+  };
+
+  tags!: Tag[] ;
+
   
 
-  constructor(private router:Router,private blogPostService:PostService,private route:ActivatedRoute, private datePipe:DatePipe, private alertService:AlertsService) { }
+  constructor(private router:Router,private blogPostService:PostService,private route:ActivatedRoute, private datePipe:DatePipe, private alertService:AlertsService, private tagService:TagService) { }
 
   ngOnInit(): void {
     this.form=this.buildForm();
+    this.getTags();
     this.route.params.subscribe((params:Params)=>{
       this.id=params['id'];
     })
@@ -41,10 +59,12 @@ export class EditPostComponent implements OnInit {
   private buildForm():FormGroup{
     return new FormGroup({
       title: new FormControl(this.blogPost?.title,[Validators.required]),
-      author: new FormControl(this.blogPost?.author,[Validators.required]),
+      author: new FormControl({value: this.blogPost?.author, disabled: true} ,[Validators.required]),
       image:new FormControl(this.blogPost?.image,[Validators.required]),
       body: new FormControl(this.blogPost?.body, [Validators.required]),
-      createdAt:new FormControl(this.blogPost?.createdAt, [Validators.required])
+      createdAt:new FormControl(this.blogPost?.createdAt, [Validators.required]),
+      likes:new FormControl({value: this.blogPost?.likes, disabled: true} ,[Validators.required]),
+      tagName:new FormControl(this.blogPost?.tag?.tagName, [Validators.required])
     })
   }
 
@@ -57,7 +77,7 @@ export class EditPostComponent implements OnInit {
       this.alertService.infoNotification();
       return
     }
-    this.blogPostService.updateBlogPost(this.form.value,this.id).subscribe((res)=>{
+    this.blogPostService.updateBlogPost({title:this.f['title'].value, likes:this.f['likes'].value, image:this.f['image'].value, body:this.f['body'].value, tag: { tagName: this.f['tagName'].value} },this.id).subscribe((res)=>{
       console.log(this.form.value)
       console.log(res);
       this.alertService.successNotification();
@@ -88,6 +108,16 @@ export class EditPostComponent implements OnInit {
     this.form.controls['createdAt'].setValue(blogPost?.createdAt);
     this.form.controls['body'].setValue(blogPost?.body);
     this.form.controls['image'].setValue(blogPost?.image);
+    this.form.controls['tagName'].setValue(blogPost?.tag?.tagName)
   }
+
+  getTags(){
+    this.tagService.getAllTags().subscribe((res)=>{
+      this.tags=res
+    })
+  }
+
+ 
+
 
 }

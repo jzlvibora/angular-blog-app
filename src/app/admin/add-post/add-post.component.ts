@@ -37,6 +37,18 @@ export class AddPostComponent implements OnInit {
     console.log(this.getTags())
   }
 
+  getDateToday(){
+    let now = new Date();
+    let month:any = (now.getMonth() + 1);               
+    let day:any = now.getDate();
+    if (month < 10) 
+        month = "0" + month;
+    if (day < 10) 
+        day = "0" + day;
+    let today = now.getFullYear() + '-' + month + '-' + day;
+    return today
+  }
+
   private buildForm():FormGroup{
     return new FormGroup({
       title: new FormControl(null,[Validators.required]),
@@ -44,7 +56,7 @@ export class AddPostComponent implements OnInit {
       image:new FormControl(null,[Validators.required]),
       body: new FormControl(null, [Validators.required]),
       likes:new FormControl(null,[Validators.required]),
-      createdAt:new FormControl(Date.now().toLocaleString(), [Validators.required]),
+      createdAt:new FormControl({value: this.getDateToday(), disabled:true}, [Validators.required]),
       tagName:new FormControl(null,[Validators.required])
     })
   }

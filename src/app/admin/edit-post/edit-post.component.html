@@ -21,7 +21,7 @@
 
 <mat-form-field appearance="fill">
     <!-- <mat-label>{{postRequest?.tag?.tagName}}</mat-label> -->
-    <mat-select formControlName="tagName" [(value)]="blogPost.tag.tagName">
+    <mat-select formControlName="tagName" >
       <mat-option *ngFor="let tag of tags" [value]="tag.tagName">
         {{tag.tagName}}
       </mat-option>
@@ -68,7 +68,7 @@
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Date</mat-label>
-    <input type="date" matInput formControlName="createdAt">
+    <input type="datetime" matInput formControlName="createdAt">
     <mat-error *ngIf="form.get('createdAt')?.invalid && (form.get('createdAt')?.dirty || form.get('createdAt')?.touched) && form.get('createdAt')?.errors?.['required']">
         Date is required
     </mat-error>

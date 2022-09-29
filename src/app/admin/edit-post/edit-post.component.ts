@@ -62,7 +62,7 @@ export class EditPostComponent implements OnInit {
       author: new FormControl({value: this.blogPost?.author, disabled: true} ,[Validators.required]),
       image:new FormControl(this.blogPost?.image,[Validators.required]),
       body: new FormControl(this.blogPost?.body, [Validators.required]),
-      createdAt:new FormControl(this.blogPost?.createdAt, [Validators.required]),
+      createdAt:new FormControl({value:this.blogPost?.createdAt,disabled:true}, [Validators.required]),
       likes:new FormControl({value: this.blogPost?.likes, disabled: true} ,[Validators.required]),
       tagName:new FormControl(this.blogPost?.tag?.tagName, [Validators.required])
     })

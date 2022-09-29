@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BlogPost } from 'src/app/shared/blog-post';
+import { PostListResponse } from 'src/app/shared/post-list-response';
 import { PostRequest } from 'src/app/shared/post-request';
 import { AuthService } from '../auth/auth.service';
 
@@ -20,6 +21,10 @@ export class PostService {
       this.BASE_URL, 
       // {headers:new HttpHeaders({'Authorization':this.authService.getToken()})}
       );
+  }
+
+  public getBlogList(request:{page:string,size:string}):Observable<PostListResponse>{
+    return this.http.get<PostListResponse>(this.BASE_URL + `list?page=${request.page}&size=${request.size}`);
   }
 
   public getCurrentUserBlogPosts():Observable<BlogPost[]>{

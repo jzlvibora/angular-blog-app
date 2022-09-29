@@ -41,3 +41,19 @@ mat-spinner{
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    .tag{
+      font-weight: 500;
+      letter-spacing: .5px;
+      margin-left:15px;
+      background-color: rgba(206, 200, 200, 0.575);
+      padding-left:10px;
+      padding-right:10px;
+      padding-top:4px ;
+      padding-bottom: 4px;
+      border-radius: 100px;
+    }
+
+    mat-card-title{
+      text-transform: capitalize;
+    }

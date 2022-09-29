@@ -9,7 +9,9 @@
       <a routerLink="/admin" mat-list-item ><mat-icon>admin_panel_settings</mat-icon>Profile</a>
       <a mat-list-item ><mat-icon>comment</mat-icon>Comments</a>
       <a mat-list-item ><mat-icon>pages</mat-icon>Starred</a>
+      <a class ="logout" mat-list-item (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</a>
     </mat-nav-list>
+    
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="accent">

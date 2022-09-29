@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { SigninRequest } from 'src/app/shared/signin-request';
 import { SignupRequest } from 'src/app/shared/signup-request';
@@ -9,7 +10,7 @@ import { SignupRequest } from 'src/app/shared/signup-request';
 })
 export class AuthService {
   BASE_URL = 'http://localhost:8080/';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router:Router) {}
 
   signup(request: SignupRequest): Observable<any> {
     return this.http.post<SignupRequest>(this.BASE_URL + 'signup', request, {
@@ -47,5 +48,6 @@ export class AuthService {
   signout() {
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
+    this.router.navigateByUrl('auth/login')
   }
 }

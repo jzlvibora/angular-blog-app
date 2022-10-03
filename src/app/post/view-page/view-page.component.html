@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <main class="tm-main">
         <!-- Search form -->
-        <div class="row tm-row">
+        <!-- <div class="row tm-row">
             <div class="col-12">
                 <form method="GET" class="form-inline tm-mb-80 tm-search-form">                
                     <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
@@ -10,7 +10,7 @@
                     </button>                                
                 </form>
             </div>                
-        </div>            
+        </div>             -->
     <!-- <form class="search-form">
         <mat-form-field appearance="fill">
             <mat-label>Search</mat-label>
@@ -23,7 +23,7 @@
             <div class="col-12">
                 <hr class="tm-hr-primary tm-mb-55">
                 <!-- Image field -->
-                <img src="{{blogPost.image}}" width="954" height="535" controls class="tm-mb-40">
+                <img src="{{blogPost?.image}}" width="954" height="535" controls class="tm-mb-40">
                     <!-- <source src="video/wheat-field.mp4" type="video/mp4">							  
                     Your browser does not support the video tag.
                 </video> -->
@@ -33,9 +33,9 @@
             <div class="col-lg-8 tm-post-col">
                 <div class="tm-post-full">                    
                     <div class="mb-4">
-                        <h2 class="pt-2 tm-color-primary tm-post-title">{{blogPost.title}}</h2>
-                        <p class="tm-mb-40">{{blogPost.createdAt | date}} posted by {{blogPost.author}}</p>
-                        <p> {{blogPost.body}} </p>
+                        <h2 class="pt-2 tm-color-primary tm-post-title">{{blogPost?.title}}</h2>
+                        <p class="tm-mb-40">{{blogPost?.createdAt | date}} posted by {{blogPost?.author}}</p>
+                        <p> {{blogPost?.body}} </p>
                         <p>
                             Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque
                             dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis
@@ -49,25 +49,37 @@
                     <div>
                         <h2 class="tm-color-primary tm-post-title">Comments</h2>
                         <hr class="tm-hr-primary tm-mb-45">
-                        <div class="tm-comment tm-mb-45">
+                        <!-- <div *ngFor="let comment of comments" class="tm-comment tm-mb-45">
                             <figure class="tm-comment-figure">
                                 <img src="../../../assets/img/comment-1.jpg" alt="Image" class="mb-2 rounded-circle img-thumbnail">
-                                <figcaption class="tm-color-primary text-center">Mark Sonny</figcaption>
+                                <figcaption class="tm-color-primary text-center">{{comment.user.username}}</figcaption>
                             </figure>
                             <div>
                                 <p>
-                                    Praesent aliquam ex vel lectus ornare tritique. Nunc et eros
-                                    quis enim feugiat tincidunt et vitae dui. Nullam consectetur
-                                    justo ac ex laoreet rhoncus. Nunc id leo pretium, faucibus 
-                                    sapien vel, euismod turpis.
+                                    {{comment.text}}
                                 </p>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="tm-color-primary">REPLY</a>
-                                    <span class="tm-color-primary">June 14, 2020</span>
+                                <div class="d-flex justify-content-between"> -->
+                                    <!-- <a href="#" class="tm-color-primary">REPLY</a>
+                                    <span class="tm-color-primary">{{comment.createdAt | date}}</span>
                                 </div>                                                 
                             </div>                                
-                        </div>
-                        <div class="tm-comment-reply tm-mb-45">
+                        </div> -->
+
+                        <mat-card class="comment" *ngFor="let comment of comments">
+                            <mat-card-title-group>
+                             <img class="commentor-avatar" mat-card-sm-image src="https://img.freepik.com/free-psd/3d-illustration-person-tank-top_23-2149436199.jpg?w=740&t=st=1664794124~exp=1664794724~hmac=d6bcdd1ac85bd01ac30901e3791a5fa8b6617306f483e6220ec39bf4af162a0f" >
+                            <div class="title">
+                              <mat-card-title>{{comment.user.username}}</mat-card-title>
+                              <mat-card-subtitle>{{comment.createdAt | date}}</mat-card-subtitle>
+                            </div>
+                            </mat-card-title-group>
+                            <mat-card-content>
+                              {{comment.text}}
+                            </mat-card-content>
+                        </mat-card>
+                        <div class="alert alert-info" role="alert" *ngIf="comments.length===0">No comments available</div>
+                          
+                        <!-- <div class="tm-comment-reply tm-mb-45">
                             <hr>
                             <div class="tm-comment">
                                 <figure class="tm-comment-figure">
@@ -81,8 +93,8 @@
                                 </p>
                             </div>                                
                             <span class="d-block text-right tm-color-primary">June 21, 2020</span>
-                        </div>
-                        <form action="" class="mb-5 tm-comment-form">
+                        </div> -->
+                        <!-- <form action="" class="mb-5 tm-comment-form">
                             <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
                             <div class="mb-4">
                                 <input class="form-control" name="name" type="text">
@@ -96,7 +108,17 @@
                             <div class="text-right">
                                 <button class="tm-btn tm-btn-primary tm-btn-small">Submit</button>                        
                             </div>                                
-                        </form>                          
+                        </form>                           -->
+
+                        <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
+                        <hr class="tm-hr-primary tm-mb-45">
+                        <form (ngSubmit)="onSubmitComment()" [formGroup]="form">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Leave a comment</mat-label>
+                            <textarea matInput placeholder="Ex. It makes me feel..." formControlName="text"></textarea>
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" type="submit">Post Comment</button>
+                    </form>
                     </div>
                 </div>
             </div>

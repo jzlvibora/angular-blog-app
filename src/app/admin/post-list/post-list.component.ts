@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/services/post/post.service';
 import { TagService } from 'src/app/services/tag/tag.service';
@@ -16,13 +17,31 @@ export class PostListComponent implements OnInit {
   blogPosts:BlogPost[]=[];
   displayedColumns: string[] = [ 'id', 'title', 'tag', 'author', 'body', 'image', 'createdAt', 'action'] ;
   isLoading:boolean=true;
+  totalPosts:number=0;
 
   constructor(private router:Router, private route:ActivatedRoute, private blogPostService:PostService, private tagService:TagService) { }
 
   ngOnInit(): void {
   this.getBlogPosts();
-  console.log(this.getTags())
+  // console.log(this.getTags())
+  // this.getBlogList({page:"0", size:"5"});
   }
+  
+  // getBlogList(request) {
+  //   this.blogPostService.getBlogList(request).subscribe(res=>{
+  //     this.blogPosts=res['content'];
+  //     this.totalPosts=data['totalPosts']
+  //   },err=>{
+  //     console.log(err.message)
+  //   })
+  // }
+
+  // nextPage(event:PageEvent){
+  //   const request={};
+  //   request['page']=event.pageIndex.toString();
+  //   request['size']=event.pageSize.toString();
+  //   this.getBlogList(request);
+  // }
 
   getBlogPosts(){
     this.blogPostService.getCurrentUserBlogPosts().subscribe((res)=>{

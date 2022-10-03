@@ -42,7 +42,8 @@ import { MatOptionModule } from '@angular/material/core';
     MatInputModule,
     MatCardModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatPaginatorModule
   ],
   exports: [
     CommonModule,
@@ -63,7 +64,8 @@ import { MatOptionModule } from '@angular/material/core';
     MatInputModule,
     MatCardModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatPaginatorModule
   ],
   providers:[{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}]
 })

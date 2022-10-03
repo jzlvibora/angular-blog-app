@@ -43,9 +43,11 @@ mat-spinner{
     }
 
     .tag{
+      // text-transform: lowercase;
       font-weight: 500;
+      // font-size:12px!important;
       letter-spacing: .5px;
-      margin-left:15px;
+      margin-left:5px;
       background-color: rgba(206, 200, 200, 0.575);
       padding-left:10px;
       padding-right:10px;
@@ -56,4 +58,19 @@ mat-spinner{
 
     mat-card-title{
       text-transform: capitalize;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .likesCount{
+      display:flex;
+      align-items: center;
+      font-size: 14px!important;
+
+    }
+
+    .likesCount mat-icon{
+      // font-size: 12px!important;
+      color:rgba(221, 76, 76, 0.979)
     }

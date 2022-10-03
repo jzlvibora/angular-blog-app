@@ -4,8 +4,8 @@
         <mat-card class="example-card" *ngFor="let blogPost of blogPosts">
             <mat-card-header>
               <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>{{blogPost.title | truncate: 20}}</mat-card-title>
-              <mat-card-subtitle><b>{{blogPost.author}}</b> | <span><i>{{blogPost.createdAt|date}}</i></span> <span class="tag">#{{blogPost?.tag?.tagName}}</span></mat-card-subtitle>
+              <mat-card-title><span> {{blogPost.title | truncate: 20}}</span><span class="likesCount"> <mat-icon>loyalty</mat-icon> {{blogPost?.likes}}</span></mat-card-title>
+              <mat-card-subtitle><b>{{blogPost.author}}</b> | <span><i>{{blogPost.createdAt|date}}</i></span> <span class="tag">#{{blogPost?.tag?.tagName}}</span> </mat-card-subtitle>
             </mat-card-header>
             <img class="blog-image" mat-card-image [src]=blogPost.image alt="{{blogPost.image}}">
             <mat-card-content>

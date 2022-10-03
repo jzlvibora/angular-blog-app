@@ -20,7 +20,7 @@ export class PostListComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getBlogPosts();
-    this.getBlogList({ page: "0", size: "5" });
+    this.getBlogList({ page: "0", size: "10" });
   }
 
   getBlogList(request:{page:string, size:string}) {

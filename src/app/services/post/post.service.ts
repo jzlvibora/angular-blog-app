@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { BlogPost } from 'src/app/shared/blog-post';
 import { PostListResponse } from 'src/app/shared/post-list-response';
 import { PostRequest } from 'src/app/shared/post-request';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
@@ -12,7 +13,7 @@ import { AuthService } from '../auth/auth.service';
 export class PostService {
 
   // BASE_URL = 'https://6319a9566b4c78d91b403f35.mockapi.io/ngBlog/v1/blogs/';
-  BASE_URL = 'http://localhost:8080/posts/';
+  BASE_URL = environment.apiUrl + 'posts/';
  
   constructor(private http:HttpClient, private authService:AuthService) { }
 

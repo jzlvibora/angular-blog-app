@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { SigninRequest } from 'src/app/shared/signin-request';
 import { SignupRequest } from 'src/app/shared/signup-request';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  BASE_URL = 'http://localhost:8080/';
+  BASE_URL = environment.apiUrl;
   constructor(private http: HttpClient, private router:Router) {}
 
   signup(request: SignupRequest): Observable<any> {

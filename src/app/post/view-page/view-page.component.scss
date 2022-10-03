@@ -602,3 +602,47 @@ p{
     font-family: 'Courier New', Courier, monospace;
     word-spacing: 4px;
 }
+
+mat-card{
+    width:40vw;
+}
+
+.comment{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.comment mat-card-title{
+    font-size: 18px!important;
+    font-weight: 500;
+    // margin-bottom:10px
+}
+
+.comment .commentor-avatar{
+    align-self: start!important;
+    border-radius: 100px!important;
+    width:70px;
+    height:70px;
+    margin-right:20px
+}
+
+mat-card-title-group{
+    display:flex;
+    justify-content:start;
+    // align-content: center;
+    // align-items: center!important;
+    margin-bottom: 20px;
+
+}
+
+.comment .title{
+    margin-top:15px
+}
+
+mat-card-content{
+    font-size: 16px;
+}
+
+.example-full-width{
+    width:40vw;
+}

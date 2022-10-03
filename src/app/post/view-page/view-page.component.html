@@ -67,7 +67,7 @@
 
                         <mat-card class="comment" *ngFor="let comment of comments">
                             <mat-card-title-group>
-                             <img class="commentor-avatar" mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                             <img class="commentor-avatar" mat-card-sm-image src="https://img.freepik.com/free-psd/3d-illustration-person-tank-top_23-2149436199.jpg?w=740&t=st=1664794124~exp=1664794724~hmac=d6bcdd1ac85bd01ac30901e3791a5fa8b6617306f483e6220ec39bf4af162a0f" >
                             <div class="title">
                               <mat-card-title>{{comment.user.username}}</mat-card-title>
                               <mat-card-subtitle>{{comment.createdAt | date}}</mat-card-subtitle>
@@ -112,11 +112,13 @@
 
                         <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
                         <hr class="tm-hr-primary tm-mb-45">
+                        <form (ngSubmit)="onSubmitComment()" [formGroup]="form">
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Leave a comment</mat-label>
-                            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                            <textarea matInput placeholder="Ex. It makes me feel..." formControlName="text"></textarea>
                         </mat-form-field>
-                        <button mat-raised-button color="primary">Post Comment</button>
+                        <button mat-raised-button color="primary" type="submit">Post Comment</button>
+                    </form>
                     </div>
                 </div>
             </div>

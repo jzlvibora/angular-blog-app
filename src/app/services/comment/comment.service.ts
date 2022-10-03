@@ -16,4 +16,9 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.BASE_URL}by-post?postId=${postId}`);
   }
 
+  public createComment(comment:{username:string,postIdentity:number, text:string }):Observable<any>{
+    return this.http.post(this.BASE_URL, comment);
+
+  }
+
 }

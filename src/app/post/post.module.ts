@@ -7,6 +7,7 @@ import { PostComponent } from './post.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { ViewPageComponent } from './view-page/view-page.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     PostRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PostModule { }

@@ -22,6 +22,7 @@
         <div class="row tm-row">
             <div class="col-12">
                 <hr class="tm-hr-primary tm-mb-55">
+                
                 <!-- Image field -->
                 <img src="{{blogPost?.image}}" width="954" height="535" controls class="tm-mb-40">
                     <!-- <source src="video/wheat-field.mp4" type="video/mp4">							  
@@ -29,11 +30,36 @@
                 </video> -->
             </div>
         </div>
+        <p class="actions">
+            <!-- <mat-icon>home</mat-icon> -->
+            <button  (click)="onSubmitVote('LIKE')"  [ngClass]="{'liked': liked === true}">
+            <mat-icon>sentiment_satisfied</mat-icon>
+              <!-- Include text description of the icon's meaning for screen-readers -->
+              <span class="cdk-visually-hidden">
+               like
+              </span>
+              </button>
+              <button  (click)="onSubmitVote('DISLIKE')" [ngClass]="{'disliked' : disliked}">
+              <mat-icon > sentiment_dissatisfied</mat-icon>
+              <!-- Include text description of the icon's meaning for screen-readers -->
+              <span class="cdk-visually-hidden">
+               dislike
+              </span>
+            </button>
+              <mat-icon matBadge="{{comments?.length}}" matBadgeColor="warn">comment</mat-icon>
+              <!-- Include text description of the icon's meaning for screen-readers -->
+              <span class="cdk-visually-hidden">
+               comment
+              </span>
+              
+          </p>
         <div class="row tm-row">
             <div class="col-lg-8 tm-post-col">
                 <div class="tm-post-full">                    
                     <div class="mb-4">
                         <h2 class="pt-2 tm-color-primary tm-post-title">{{blogPost?.title}}</h2>
+                        
+
                         <p class="tm-mb-40">{{blogPost?.createdAt | date}} posted by {{blogPost?.author}}</p>
                         <p> {{blogPost?.body}} </p>
                         <p>
@@ -77,7 +103,7 @@
                               {{comment.text}}
                             </mat-card-content>
                         </mat-card>
-                        <div class="alert alert-info" role="alert" *ngIf="comments.length===0">No comments available</div>
+                        <div class="alert alert-info" role="alert" *ngIf="comments?.length===0">No comments available</div>
                           
                         <!-- <div class="tm-comment-reply tm-mb-45">
                             <hr>

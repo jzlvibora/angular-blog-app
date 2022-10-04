@@ -5,6 +5,7 @@ import { AlertsService } from 'src/app/admin/alerts.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CommentService } from 'src/app/services/comment/comment.service';
 import { PostService } from 'src/app/services/post/post.service';
+import { VoteService } from 'src/app/services/vote/vote.service';
 import { BlogPost } from 'src/app/shared/blog-post';
 import { Comment } from 'src/app/shared/comment';
 
@@ -21,8 +22,10 @@ export class ViewPageComponent implements OnInit {
   blogPost!:BlogPost;
   isLoading=true;
   comments!:Comment[];
+ liked:boolean=false;
+ disliked:boolean=false;
 
-  constructor(private blogPostService:PostService, private route:ActivatedRoute, private commentService:CommentService, private authService:AuthService, private alertService:AlertsService) { }
+  constructor(private blogPostService:PostService, private route:ActivatedRoute, private commentService:CommentService, private authService:AuthService, private alertService:AlertsService, private voteService:VoteService) { }
 
   ngOnInit(): void {
     this.form=this.buildForm();
@@ -77,8 +80,25 @@ export class ViewPageComponent implements OnInit {
       this.getComments();
 
     })
+  }
 
+  onSubmitVote(vote:string){
+    this.liked==true
+    this.voteService.likePost({voteType:vote, postId:this.id}).subscribe((res)=>{
+      // console.log(res)
+      // if(vote==='LIKE'){
+      //   this.liked===true;
+      // }
+      // if(vote==='DISLIKE'){
+      //   this.disliked===true
+      // }
 
+    
+    
+    },(err)=>{
+      console.log(err)
+      this.alertService.errorNotification(err.error.message)
+    })
 
   }
 }

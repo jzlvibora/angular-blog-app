@@ -646,3 +646,18 @@ mat-card-content{
 .example-full-width{
     width:40vw;
 }
+
+
+.actions mat-icon{
+    // font-size: 35px;
+    margin:10px;
+//    color:#00acee;
+}
+
+.liked{
+    background-color:'green' !important;
+}
+
+.disliked{
+    color:'red'
+}

@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule} from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import {MatBadgeModule} from '@angular/material/badge'
 
 
 
@@ -43,7 +44,8 @@ import { MatOptionModule } from '@angular/material/core';
     MatCardModule,
     MatSelectModule,
     MatOptionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBadgeModule
   ],
   exports: [
     CommonModule,
@@ -65,7 +67,8 @@ import { MatOptionModule } from '@angular/material/core';
     MatCardModule,
     MatSelectModule,
     MatOptionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBadgeModule
   ],
   providers:[{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}]
 })

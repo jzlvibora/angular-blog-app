@@ -655,9 +655,11 @@ mat-card-content{
 }
 
 .liked{
-    background-color:'green' !important;
+    background-color:red !important;
+    color:white
 }
 
 .disliked{
-    color:'red'
+    background-color:red !important;
+    color:white
 }

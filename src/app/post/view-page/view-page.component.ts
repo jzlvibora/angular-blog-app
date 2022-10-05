@@ -82,23 +82,42 @@ export class ViewPageComponent implements OnInit {
     })
   }
 
-  onSubmitVote(vote:string){
-    this.liked==true
-    this.voteService.likePost({voteType:vote, postId:this.id}).subscribe((res)=>{
-      // console.log(res)
-      // if(vote==='LIKE'){
-      //   this.liked===true;
-      // }
-      // if(vote==='DISLIKE'){
-      //   this.disliked===true
-      // }
+  // onSubmitVote(vote:string){
+  //   this.liked==true
+  //   this.voteService.likePost({voteType:vote, postId:this.id}).subscribe((res)=>{
+  //     console.log(res)
+  //     if(vote==='LIKE'){
+  //       this.liked===true;
+  //     }
+  //     if(vote==='DISLIKE'){
+  //       this.disliked===true
+  //     }
 
     
     
-    },(err)=>{
-      console.log(err)
-      this.alertService.errorNotification(err.error.message)
+  //   },(err)=>{
+  //     console.log(err)
+  //     this.alertService.errorNotification(err.error.message)
+  //   })
+
+  // }
+
+  // onVote(){
+  //   this.liked=true;
+  // }
+
+  onSubmitLike(){
+    this.voteService.likePost({voteType:'LIKE', postId:this.id}).subscribe((res)=>{
+      this.liked=true
+      console.log(this.liked)
     })
+  }
 
+  
+  onSubmitDislike(){
+    this.voteService.likePost({voteType:'DISLIKE', postId:this.id}).subscribe((res)=>{
+      this.disliked=true
+      console.log(this.disliked)
+    })
   }
 }

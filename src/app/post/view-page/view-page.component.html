@@ -30,28 +30,37 @@
                 </video> -->
             </div>
         </div>
-        <p class="actions">
-            <!-- <mat-icon>home</mat-icon> -->
-            <button  (click)="onSubmitVote('LIKE')"  [ngClass]="{'liked': liked === true}">
+        <!-- <p class="actions">
+            <button  (click)="onSubmitVote('LIKE')" [ngClass]="{liked: liked}">
             <mat-icon>sentiment_satisfied</mat-icon>
-              <!-- Include text description of the icon's meaning for screen-readers -->
+              
               <span class="cdk-visually-hidden">
                like
               </span>
-              </button>
-              <button  (click)="onSubmitVote('DISLIKE')" [ngClass]="{'disliked' : disliked}">
+            </button>
+            <button  (click)="onSubmitVote('DISLIKE')" [ngClass]="{disliked : disliked}">
               <mat-icon > sentiment_dissatisfied</mat-icon>
-              <!-- Include text description of the icon's meaning for screen-readers -->
+              
               <span class="cdk-visually-hidden">
                dislike
               </span>
             </button>
               <mat-icon matBadge="{{comments?.length}}" matBadgeColor="warn">comment</mat-icon>
-              <!-- Include text description of the icon's meaning for screen-readers -->
+              
               <span class="cdk-visually-hidden">
                comment
               </span>
               
+          </p> -->
+          <p class="actions">
+            <button  (click)="onSubmitLike()" [ngClass]="{liked: liked}">LIKE
+            </button>
+            <button  (click)="onSubmitDislike()" [ngClass]="{disliked : disliked}">DISLIKE
+            </button>
+              <mat-icon matBadge="{{comments?.length}}" matBadgeColor="warn">comment</mat-icon>
+              <span class="cdk-visually-hidden">
+               comment
+              </span>
           </p>
         <div class="row tm-row">
             <div class="col-lg-8 tm-post-col">

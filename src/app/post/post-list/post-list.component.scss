@@ -14,13 +14,17 @@
     width:350px;
     height:300px
   }
-//   .content{
-//     margin: auto;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     padding:1rem
-//   }
+
+  .content{
+    position:relative;
+  }
+
+  mat-paginator{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0
+  }
 
 .card-container{
     width:100%;

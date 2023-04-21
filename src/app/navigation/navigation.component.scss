@@ -24,6 +24,11 @@ mat-sidenav{
   padding: 0;
 }
 
+.sidenav-content {
+  position:relative;
+  height:100%;
+}
+
 a{
   color:white !important;
   font-family: 'Courier New', Courier, monospace!important;
@@ -36,7 +41,10 @@ mat-icon{
 }
 
 .logout{
-  margin-top:250%;
+  position:absolute;
+  bottom:0;
+  right:0;
+  left:0
 }
 
 

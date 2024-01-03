@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
+import { AlertsService } from 'src/app/admin/alerts.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
   isSignedin=false;
 
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(private authService:AuthService, private router:Router, private alertService:AlertsService) { }
 
   ngOnInit(): void {
     this.isSignedin=this.authService.isUserSignedin();
@@ -46,7 +47,10 @@ export class LoginComponent implements OnInit {
     }
     this.authService.signin(this.loginForm.value).subscribe((res)=>{
       this.router.navigateByUrl('posts')
-    },)
+    },
+    (err) => {
+      this.alertService.errorNotification("Incorrect username and/or password")
+    })
 
   }
 

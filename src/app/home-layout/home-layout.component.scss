@@ -1,3 +1,18 @@
+// .layout{
+//    height:100vh;
+// }
+
 .layout{
-   height:100vh;
+    // border:2px solid rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+.layout-body{
+    height:calc(100vh - 250px);
+    margin-top:150px;
+    padding:2rem;
+    border:2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

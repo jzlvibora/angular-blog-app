@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600&display=swap');
+
+nav{
+    margin-top: 100px;
+    background-color: blanchedalmond !important;
+    height:50px
+}
+.navbar-nav{
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+

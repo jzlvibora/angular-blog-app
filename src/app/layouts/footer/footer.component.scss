@@ -1,0 +1,23 @@
+*{
+  color:white !important;
+  font-family: 'Sarabun', sans-serif !important;
+}
+
+.footer{
+  height:100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a9cce9
+}
+
+span{
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.footer span,a{
+  font-family: 'Sarabun', sans-serif !important;
+  color: white;
+
+}

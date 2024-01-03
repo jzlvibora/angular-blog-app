@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap');
+
+*{
+    font-family: 'Inconsolata', monospace;
+}
+
+mat-card{
+    max-width:400px;
+    border:none !important
+}
+
+mat-card-title span{
+    font-family: 'Open Sans', sans-serif !important;
+
+}
+
+.example-card {
+    max-width: 300px;
+    max-height: 400px;
+    margin: .5rem;
+   display:inline-table;
+  }
+  
+  .user-avatar {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+//   .blog-image{
+//     width:350px;
+//     height:300px
+//   }
+//   .content{
+//     margin: auto;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     padding:1rem
+//   }
+
+// .card-container{
+//     width:100%;
+// }
+
+    .tag{
+      // text-transform: lowercase;
+      font-weight: 500;
+      // font-size:12px!important;
+      letter-spacing: .5px;
+      margin-left:5px;
+      background-color: rgba(206, 200, 200, 0.575);
+      padding-left:10px;
+      padding-right:10px;
+      padding-top:4px ;
+      padding-bottom: 4px;
+      border-radius: 100px;
+    }
+
+    mat-card-title{
+      text-transform: capitalize;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .likesCount{
+      display:flex;
+      align-items: center;
+      font-size: 14px!important;
+
+    }
+
+    .likesCount mat-icon{
+      // font-size: 12px!important;
+      color:rgba(221, 76, 76, 0.979)
+    }
+
+    // mat-card{
+    //   border-radius: 0 !important;
+    //  margin:3rem !important
+    // }

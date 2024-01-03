@@ -1,28 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Ms+Madi&family=Poppins:wght@100;200;400;500&display=swap');
 @import 'src/styles';
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300&display=swap');
 
-// *{
-//   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-// }
 
-.sidenav-container {
-  height: 100%;
+.sidenav-container{
+  height:92%;
 }
 
 .sidenav {
-  width: 280px;
+  width: 12rem
 }
 
 .sidenav .mat-toolbar {
   background: inherit;
 }
 
-
 mat-sidenav{
-  background:#0CC !important;
+  background:#6096ba !important;
   color:$font-secondary-color !important;
   padding: 0;
 }
+
 
 a{
   color:white !important;
@@ -34,11 +33,6 @@ a{
 mat-icon{
   margin-right: 1rem;
 }
-
-.logout{
-  margin-top:250%;
-}
-
 
 .mat-toolbar.mat-primary {
   position: sticky;
@@ -55,20 +49,17 @@ mat-icon{
   display:flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Courier New', Courier, monospace!important;
   font-size:xx-large
 }
 
 .profile-avatar{
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-margin-left: 20%;
-margin-bottom:1rem;
-margin-top:1rem;
-border-radius: 100rem;
-width:100px;
-height:100px;
+  margin-left: 20%;
+  margin-bottom:1rem;
+  margin-top:1rem;
+  border-radius: 100rem;
+  width:100px;
+  height:100px;
 }
 
 
@@ -76,5 +67,5 @@ height:100px;
   display: flex;
   justify-content: center;
   align-items: center;
- flex-direction: row;
+  flex-direction: row;
 }

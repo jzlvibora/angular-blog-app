@@ -21,6 +21,8 @@ import { PostCardComponent } from './layouts/post-card/post-card.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoryPostsComponent } from './pages/category-posts/category-posts.component';
 import { SinglePostComponent } from './pages/single-post/single-post.component';
+import { CommentFormComponent } from './comments/comment-form/comment-form.component';
+import { CommentsListComponent } from './comments/comments-list/comments-list.component';
 
 
 
@@ -42,6 +44,8 @@ import { SinglePostComponent } from './pages/single-post/single-post.component';
     HomeComponent,
     CategoryPostsComponent,
     SinglePostComponent,
+    CommentFormComponent,
+    CommentsListComponent,
    
   
   

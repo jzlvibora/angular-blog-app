@@ -5,9 +5,12 @@
     font-family: 'Inconsolata', monospace;
 }
 
-mat-card{
-    max-width:400px;
-    border:none !important
+.post-card{
+    // width:350px !important;
+    border:none !important;
+    // max-height: 400px;
+    // overflow: hidden;
+    width:350px
 }
 
 mat-card-title span{
@@ -15,12 +18,6 @@ mat-card-title span{
 
 }
 
-.example-card {
-    max-width: 300px;
-    max-height: 400px;
-    margin: .5rem;
-   display:inline-table;
-  }
   
   .user-avatar {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');

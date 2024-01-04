@@ -1,0 +1,29 @@
+form{
+    background-color: #f0f3f58e
+}
+
+label{
+    font-size: 1rem;
+    padding:.3rem
+}
+
+input{
+    border-radius: 0;
+}
+
+textarea{
+    min-height:200px
+}
+
+button{
+    margin-top: 2rem;
+    border:none;
+    padding-right:1rem;
+    padding-left:1rem;
+    padding-top:.4rem;
+    padding-bottom: .4rem;
+    background-color: rgb(85, 127, 206);
+    color:white;
+    font-weight: 500;
+    font-size: 1rem;
+}

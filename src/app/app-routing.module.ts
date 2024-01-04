@@ -1,29 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
-import { HomeLayoutComponent } from './home-layout/home-layout.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-
-
+import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CategoryPostsComponent } from './pages/category-posts/category-posts.component';
+import { SinglePostComponent } from './pages/single-post/single-post.component';
 
 const routes: Routes = [
-  {path:'auth', component:AuthLayoutComponent,
-  children:[
-    {path:'login', component:LoginComponent},
-    {path:'signup', component:SignupComponent}
-  ]
-},
-{path:'', component:HomeLayoutComponent, canActivate:[AuthGuardGuard],
-children:[
-  {path: '',loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
-  {path:'posts', loadChildren: () => import('./post/post.module').then(m => m.PostModule)}
-]}
+  {
+    path: 'auth',
+    component: AuthLayoutComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
+    ],
+  },
+  {
+    path:'home', component:HomeComponent
+  },
+  {
+    path:'category', component:CategoryPostsComponent
+  },
+  {
+    path: 'post', component:SinglePostComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

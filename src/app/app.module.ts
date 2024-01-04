@@ -12,13 +12,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DatePipe } from '@angular/common';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
-import { HomeLayoutComponent } from './home-layout/home-layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { CategoryNavComponent } from './layouts/category-nav/category-nav.component';
 import { PostCardComponent } from './layouts/post-card/post-card.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CategoryPostsComponent } from './pages/category-posts/category-posts.component';
+import { SinglePostComponent } from './pages/single-post/single-post.component';
 
 
 
@@ -33,11 +35,13 @@ import { PostCardComponent } from './layouts/post-card/post-card.component';
     PageNotFoundComponent,
     LoginComponent,
     AuthLayoutComponent,
-    HomeLayoutComponent,
     SignupComponent,
     HeaderComponent,
     CategoryNavComponent,
     PostCardComponent,
+    HomeComponent,
+    CategoryPostsComponent,
+    SinglePostComponent,
    
   
   

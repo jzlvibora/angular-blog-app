@@ -3,10 +3,26 @@
 header{
     height:100px;
     background-color: #a9cce9 !important;
-    font-family: 'Days One', sans-serif;
-    font-size: 2rem;
+    color:white
+    
+   
 }
 
 .navbar-brand{
-    color:white
+    color:white;
+    font-size: 2rem;
+    font-family: 'Days One', sans-serif;
+    margin-right: 55rem;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.25rem;
+    font-weight:700 ;
+}
+
+.menu a{
+   margin-right: 2rem;
 }

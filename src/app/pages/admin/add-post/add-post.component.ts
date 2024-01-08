@@ -15,6 +15,7 @@ import { AlertsService } from '../alerts.service';
   styleUrls: ['./add-post.component.scss']
 })
 export class AddPostComponent implements OnInit {
+  img:any = "../../../../assets/img/img-placeholder.png"
   form!:FormGroup;
   error:string|null=null;
   isSubmitSuccessful:boolean=false;
@@ -96,6 +97,16 @@ export class AddPostComponent implements OnInit {
     this.tagService.getAllTags().subscribe((res)=>{
       this.tags=res
     })
+  }
+
+  showPreview($event:any){
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.img = e.target?.result
+    }
+
+    reader.readAsDataURL($event.target.files[0])
+
   }
 
 }

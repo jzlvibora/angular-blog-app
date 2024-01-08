@@ -52,10 +52,10 @@ export class AddPostComponent implements OnInit {
 
   private buildForm():FormGroup{
     return new FormGroup({
-      title: new FormControl(null,[Validators.required]),
+      title: new FormControl(null,[Validators.required, Validators.minLength(3)]),
       // author: new FormControl(null,[Validators.required]),
       image:new FormControl(null,[Validators.required]),
-      body: new FormControl(null, [Validators.required]),
+      body: new FormControl(null, [Validators.required, Validators.minLength(10)]),
       likes:new FormControl(null,[Validators.required]),
       createdAt:new FormControl({value: this.getDateToday(), disabled:true}, [Validators.required]),
       tagName:new FormControl(null,[Validators.required])

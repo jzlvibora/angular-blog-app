@@ -1,3 +1,4 @@
+<div class="container">
 <div class="back-btn">
     <button mat-raised-button color="accent" routerLink="/admin">Back</button>
 </div>
@@ -19,22 +20,13 @@
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-    <mat-label>Select Tag</mat-label>
+    <mat-label>Select Category</mat-label>
     <mat-select formControlName="tagName">
       <mat-option *ngFor="let tag of tags" [value]="tag.tagName">
         {{tag.tagName}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  
-
-<!-- <mat-form-field appearance="fill">
-    <mat-label>Tag</mat-label>
-    <input type="number" matInput formControlName="tagId">
-    <mat-error *ngIf="form.get('tagId')?.invalid && (form.get('tagId')?.dirty || form.get('tagId')?.touched) && form.get('tagId')?.errors?.['required']">
-        Tag is required
-    </mat-error>
-</mat-form-field> -->
 
 <mat-form-field appearance="fill">
     <mat-label>Likes</mat-label>
@@ -44,15 +36,8 @@
     </mat-error>
 </mat-form-field>
 
-<!-- <mat-form-field appearance="fill">
-    <mat-label>Author</mat-label>
-    <input matInput formControlName="author">
-    <mat-error *ngIf="form.get('author')?.invalid && (form.get('author')?.dirty || form.get('author')?.touched) && form.get('author')?.errors?.['required']">
-        Author is required
-    </mat-error>
-</mat-form-field> -->
 
-<form appearance="fill">
+<!-- <form appearance="fill"> -->
     <mat-label>Image</mat-label> <br>
     <img [src]="img" alt="" class="img-fluid img-preview" width="250px" height="250px">
     <!-- <img src="../../../../assets/img/img-placeholder.png" alt=""> -->
@@ -60,14 +45,11 @@
     <mat-error *ngIf="form.get('image')?.invalid && (form.get('image')?.dirty || form.get('image')?.touched) && form.get('image')?.errors?.['required']">
         Image is required
     </mat-error>
-</form>
-<mat-form-field appearance="fill">
-    <mat-label>body</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..." rows="5" formControlName="body"></textarea>
-    <mat-error *ngIf="form.get('body')?.invalid && (form.get('body')?.dirty || form.get('body')?.touched) && form.get('body')?.errors?.['required']">
-        Body is required
-    </mat-error>
-</mat-form-field>
+
+<!-- <form action=""> -->
+    <angular-editor placeholder="Tell your Story" height="500px" formControlName="body"></angular-editor>
+
+<!-- </form> -->
 <mat-form-field appearance="fill">
     <mat-label>Date</mat-label>
     <input type="date" matInput formControlName="createdAt">
@@ -84,4 +66,5 @@
 </form>
 
 
+</div>
 </div>

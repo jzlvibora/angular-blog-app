@@ -9,6 +9,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { MaterialModule } from '../../shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SharedModule } from '../../shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-  ],
+    AngularEditorModule
+      ],
 })
 export class AdminModule {}

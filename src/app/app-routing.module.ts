@@ -26,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'post', component:SinglePostComponent
-  }
+  },
+  {path: '',loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)},
 ];
 
 @NgModule({

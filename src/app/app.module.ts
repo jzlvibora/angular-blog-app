@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { MaterialModule } from './shared/material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -32,7 +31,6 @@ import { CommentsListComponent } from './comments/comments-list/comments-list.co
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
     FooterComponent,
     PageNotFoundComponent,
     LoginComponent,

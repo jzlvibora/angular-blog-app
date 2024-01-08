@@ -6,10 +6,9 @@ import { AdminComponent } from './admin.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { PostListComponent } from './post-list/post-list.component';
-import { MaterialModule } from '../shared/material/material.module';
+import { MaterialModule } from '../../shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,7 @@ import { SharedModule } from '../shared/shared.module';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
-  ]
+    SharedModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}
